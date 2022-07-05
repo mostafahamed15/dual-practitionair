@@ -1,0 +1,24 @@
+.input {
+    width: 320px;
+}
+
+.error { font-size: 12px;}
+
+// input of type date placeholder
+::-webkit-datetime-edit-text { color: #d0d0d0; }
+::-webkit-datetime-edit-month-field { color: #d0d0d0; }
+::-webkit-datetime-edit-day-field { color: #d0d0d0; }
+::-webkit-datetime-edit-year-field { color: #d0d0d0; }
+::-webkit-calendar-picker-indicator {background-image: url("../../../assets/imgs/calender.png"); }
+
+// hide input of type number arrows for Chrome, Safari, Edge, Opera
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+// hide input of type number arrows for Firefox 
+input[type=number] {
+  -moz-appearance: textfield;
+}

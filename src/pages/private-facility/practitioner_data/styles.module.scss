@@ -1,0 +1,13 @@
+.checkbox {
+    margin-top: 40px;
+}
+
+.checkbox > input:checked {  
+    border-radius: 1px;  
+    appearance: none;
+    height: 10px;
+    width: 10px;
+    background-color: #306c84;
+    outline: 1px solid #306c84;
+    outline-offset: 2px;
+}

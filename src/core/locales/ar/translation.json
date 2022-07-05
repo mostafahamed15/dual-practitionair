@@ -1,0 +1,100 @@
+{
+  "header": {
+    "GovernoratorGiver": "الجهة الحكومية المانحة"
+  },
+  "table": {
+    "search": "بحث",
+    "showInputs": "أظهر مدخلات",
+    "cancelApprove": "الغاء الموافقة",
+    "renewOrder": "تجديد الطلب"
+  },
+  "subHeader": {
+    "titleGovernoratorSpecialist": " موافقة عمل خارج أوقات الدوام الرسمي للممارسين الصحيين الحكوميين"
+  },
+  "modal" : {
+    "yes": "نعم", 
+    "no": "لا",
+    "sendConfirm": "تم إرسال الطلب بنجاح",
+    "accept": "سيم تأكيد قبول الطلب، هل ترغب بالاستمرار؟",
+    "acceptConfirm": "تم تأكيد قبول الطلب بنجاح",
+    "cancel": "سيتم إلغاء الموافقة، هل ترغب بالاستمرار؟",
+    "cancelConfirm": "تم الغاء الموافقة بنجاح",
+    "back": "عودة للرئيسية"
+  },
+  "dataBox" : {
+    "practitionerName": "الاسم",
+    "practitionerId": "هوية الممارس",
+    "practitionerClass": "تصنيف الممارس",
+    "nationallity": "الجنسية",
+    "privateHealthFacility": "المنشأة الصحية الخاصة",
+    "workName": "الاسم",
+    "sector": "القطاع"
+  },
+  "daytimepicker" : {
+    "from": "من",
+    "to": "إلى",
+    "choose": "اختر"
+  },
+  "days": {
+    "Sunday": "الأحد",
+    "Monday": "الإثنين",
+    "Tusday": "الثلاثاء",
+    "Wednesday" : "الأربعاء",
+    "Thursday" : "الخميس",
+    "Friday" : "الجمعة",
+    "Saturday": "السبت"
+  },
+  "privateFacility": {
+    "headerTitle": "المنشأة الخاصة المستفيد",
+    "home": {
+      "title": "طلب موافقة عمل خارج أوقات الدوام الرسمي جديد",
+      "idNumber": "رقم الهوية الوطنية",
+      "birthDate": "تاريخ الميلاد",
+      "check": "تحقق",
+      "ordersStatus": "حالة الطلبات"
+    },
+    "practitionerData": {
+      "practitionerData": "بيانات الممارس",
+      "workData":  "بيانات جهة العمل",
+      "confirm": "أقر أنا الموقع أدناه بصحة البيانات الواردة بهذه الاستمارة وأتحمل المسؤولية الكاملة إن ظهر خلاف ذلك",
+      "continue":  "استمرار"
+  },
+  "acceptOrder": {
+    "title": "طلب موافقة عمل خارج أوقات الدوام الرسمي",
+    "confirm": "تأكيد القبول",
+    "reject": "رفض"
+  },
+  "previewOrder": {
+    "title": "معاينة طلب موافقة عمل خارج أوقات الدوام الرسمي",
+    "sendOrder": "إرسال الطلب",
+    "cancel": "إلغاء"
+  }
+},
+  "errors": {
+    "required": "الحقل مطلوب",
+    "length": "يجب أن يتكون الرقم من 10 خانات"
+  },
+  "orderInfo": {
+    "practicionar": "بيانات الممارس الحكومي",
+    "practitionarOrg": "بيانات المنشأة الخاصة المستفيدة",
+    "organization": {
+      "orgName": "اسم المنشأة",
+      "type": "نوع المنشأة",
+      "city": "المدينة",
+      "orgId": "رقم ترخيص المنشأة",
+      "expDate": "تاريخ انتهاء الترخيص",
+      "governorate": "المديرية"
+    },
+    "person": {
+      "name": "اسم الممارس",
+      "specialization": "التخصص",
+      "specializationId": "رقم تصنيف الممارس",
+      "specializationEndDate": "تاريخ انتهاء التصنيف",
+      "startEndAcceptDate": "تاريخ بداية / انتهاء الموافقة",
+      "acceptPeriod": "مدة الموافقة",
+      "orgName": "اسم المنشأة الحكومية",
+      "department": "القطاع",
+      "maxHours": "الحد الأعلى للساعات الأسبوعية المتاحة للممارس للعمل في الجهة الخاصة"
+    }
+  }
+}

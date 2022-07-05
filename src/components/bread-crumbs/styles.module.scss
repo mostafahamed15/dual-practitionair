@@ -1,0 +1,14 @@
+.item {
+  margin-inline-start: 7px;
+}
+
+.item::before {
+  content: '' !important;
+  color: white !important;
+}
+
+.item::after {
+  content: '>' !important;
+  color: white !important;
+  margin-inline-start: 7px;
+}

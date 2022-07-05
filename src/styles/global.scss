@@ -1,0 +1,58 @@
+@import '~bootstrap/scss/functions';
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  background-color: #fefefe;
+  font-family: 'DIN Next LT Arabic';
+  font-size: 1rem;
+  --base-font-lineheight: 1.5em;
+}
+
+html {
+  height: 100%;
+  overflow: auto;
+}
+
+input:focus{
+  outline: none;
+}
+
+input::placeholder {
+  font-size:12px;
+  color: #d0d0d0;
+  font-weight:bolder;
+}
+
+.select {
+  border: 6px solid transparent;
+  outline: 1px solid #d0d0d0;
+}
+
+$theme-colors: (
+  'primary': #00a896,
+  'secondary': #306c84,
+  'success': #2a7e2e,
+  'info': #9e925e,
+  'light': #cce2de,
+  'lighter': #d0e5e0,
+  'lightest': #eff5f4,
+  'dark': #cce2de,
+  'danger': #d92525,
+  'reject': #882c44,
+  'gray-100': #f7f7f7,
+  'gray-200': #f4f4f4,
+  'gray-300': #e3e3e3,
+  'gray-400': #d0d0d0,
+  'gray-500': #b5b5b5,
+  'gray-600': #a8a8a8,
+  'gray-700': #9f9f9f,
+  'gray-800': #656464,
+  'gray-900': #333333,
+) !default;
+
+@import '~bootstrap/scss/bootstrap.scss';
