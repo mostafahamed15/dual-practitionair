@@ -6,6 +6,7 @@ import {
   privateHomePath,
   createEditOrderPath,
   acceptOrderPath,
+  governmentAcceptOrderPath,
   cancelOrderPath,
   practitionerDataPath,
   previewOrderPath,
@@ -18,7 +19,9 @@ const Home = React.lazy(() => import("../pages/home"));
 const GovernmentHome = React.lazy(
   () => import("../pages/government-facility/government-home")
 );
-
+const GovernmentAcceptOrder = React.lazy(
+  () => import("../pages/government-facility/accept-order")
+);
 const PrivateHome = React.lazy(
   () => import("../pages/private-facility/private-home")
 );
@@ -71,6 +74,11 @@ export default function Routing() {
             key="GovernmentHome"
             path={governmentHomePath()}
             element={withSuspenseComponents(<GovernmentHome />)}
+          />
+          <Route
+            key="GovernmentAcceptOrder"
+            path={governmentAcceptOrderPath()}
+            element={withSuspenseComponents(<GovernmentAcceptOrder />)}
           />
           <Route
             key="PrivateHome"

@@ -2,27 +2,25 @@ import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { Status } from "../../core/enums/Enum";
 import { createEditOrderPath } from "../../routes/Paths";
-import { acceptOrderPath } from "../../routes/Paths";
+import { acceptOrderPath, governmentAcceptOrderPath} from "../../routes/Paths";
 import { cancelOrderPath } from "../../routes/Paths";
 
 interface TableButtonProps {
   status: string;
 }
 
-export default function TableButton({ status }: TableButtonProps) {
+export default function GovernmentTableButton({ status }: TableButtonProps) {
   const navigate = useNavigate();
 
   const variant = (): string => {
     if (status === Status.ACCEPTED) return "outline-primary";
     else if (status === Status.CANCELLED  ) return "outline-danger";
     else if (status === Status.NEW) return "outline-secondary";
-    else if (status === Status.Waiting) return "outline-info";
-    else if (status === Status.Rejected) return "outline-reject";
     else return "outline-gray-800";
   };
 
   const navigationPath = (): string => {
-    if (status === Status.ACCEPTED) return acceptOrderPath();
+    if (status === Status.ACCEPTED) return governmentAcceptOrderPath();
     else if (status === Status.CANCELLED) return cancelOrderPath();
     else if (status === Status.NEW) return createEditOrderPath();
     else return "#";

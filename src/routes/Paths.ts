@@ -14,10 +14,12 @@ export function createEditOrderPath(): string {
     return "/government/home/create-edit"
 }
 
+export function governmentAcceptOrderPath(): string {
+    return "/government/home/accept"
+}
 export function acceptOrderPath(): string {
     return "/private/home/accept"
 }
-
 export function cancelOrderPath(): string {
     return "/private/home/cancel"
 }
