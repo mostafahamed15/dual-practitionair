@@ -1,6 +1,7 @@
 import Table from "../../../components/table";
 import translate from "../../../core/locales/ar/translation.json";
-import { dummyTitles, dummyRows } from "../../../core/data/Data";
+import { governmentTableTitles, governmentTableRows } from "../../../core/data/Data";
+import GovernmentTable from "../../../components/government-table";
 
 export default function GovernmentHome() {
   return (
@@ -10,7 +11,7 @@ export default function GovernmentHome() {
           {translate.privateFacility.home.title}
         </strong>
         <hr className="text-gray-400" />
-        <Table titles={dummyTitles} rows={dummyRows} />
+        <GovernmentTable titles={governmentTableTitles} rows={governmentTableRows}   />
       </div>
     </div>
   );

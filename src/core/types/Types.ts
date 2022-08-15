@@ -6,7 +6,6 @@ export type PersonInfo = {
   startEndAcceptDate?: string;
   acceptPeriod?: string;
   orgName: string;
-  department: string;
   maxHours?: string;
 };
 
