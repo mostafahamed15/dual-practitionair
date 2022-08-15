@@ -1,5 +1,5 @@
 import OrderInfo from "../../../components/order-info";
-import { organizationInfo, personInfo } from "../../../core/data/Data";
+import { organizationInfo,  privatePersonInfo } from "../../../core/data/Data";
 import translate from "../../../core/locales/ar/translation.json";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { Status } from "../../../core/enums/Enum";
@@ -23,7 +23,7 @@ export default function AcceptOrder() {
           <p className="mb-1 me-1 fw-bold">{Status.ACCEPTED}</p>
         </div>
       </div>
-      <OrderInfo organizationInfo={organizationInfo} personInfo={personInfo} />
+      <OrderInfo organizationInfo={organizationInfo} personInfo={privatePersonInfo} />
       <WorkSchedule/>
       <PeriodOfWork/>
       <hr className="text-gray-700 my-5 w-100" />

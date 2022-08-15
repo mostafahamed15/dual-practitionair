@@ -18,12 +18,12 @@ export default function DataBox({ data }: DataBoxProps) {
           .map((value: string, index: number) => (
             <Col
               key={index}
-              className={`${
-                index !== 4 && "border-start border-gray-400 ps-1 mt-3"
+              className={` mt-3 ${
+                index !== 4 && "border-start border-gray-400 ps-1 "
               }`}
             >
               {Object.values(translate.dataBox)[index]}
-              <Col className="text-gray-700 small">{value}</Col>
+              <Col className="text-gray-700 small mt-2">{value}</Col>
             </Col>
           ))}
       </Row>
@@ -43,7 +43,7 @@ export default function DataBox({ data }: DataBoxProps) {
               }`}
             >
               {Object.values(translate.dataBox)[index + 5]}
-              <Col className="text-gray-700 small mb-3">{value}</Col>
+              <Col className="text-gray-700 small mb-3 mt-2 ">{value}</Col>
             </Col>
           ))}
       </Row>

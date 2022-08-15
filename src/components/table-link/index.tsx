@@ -23,7 +23,7 @@ export default function TableLink({ status }: ModalPopupProps) {
 
   return (
     <>
-      {USER === governmentFacility().type && (
+      {USER === privateFacility().type && (
         <Button
           variant="none"
           size="lg"
@@ -41,7 +41,7 @@ export default function TableLink({ status }: ModalPopupProps) {
       >
         <MdOutlineCancel className="text-danger" />
       </Button>
-      {USER === privateFacility().type && (
+      {USER === governmentFacility().type && (
         <Button
           disabled={status === Status.ACCEPTED}
           variant="none"

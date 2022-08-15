@@ -2,12 +2,12 @@ import translate from "../../core/locales/ar/translation.json";
 import Styles from "./styles.module.scss";
 import { Container, Row, Col } from "react-bootstrap";
 import { AiFillInfoCircle ,AiFillClockCircle} from "react-icons/ai";
-
-function Endorsement() {
-  const options = [
+function WorkHours() {
+const options = [
     translate.endorsement.approvalperiod.options.option1,
     translate.endorsement.approvalperiod.options.option2,
   ];
+
   return (
     <div>
       <Container className="py-4">
@@ -43,22 +43,8 @@ function Endorsement() {
             </select>
           </Col>
         </Row>
-        <div>
-          <h4 className="text-secondary  text-center mb-5">{translate.endorsement.title}</h4>
-         
-          <div className="d-flex align-items-start">
-         
-            <input type="checkbox"/>
-            <ul>
-
-           {translate.endorsement.listitems.map((item: string, index: number) => (
-          <li className="text-secondary pe-3" key={index}>{item}</li>
-        ))}
-            </ul>
-          </div>
-        </div>
       </Container>
     </div>
   );
 }
-export default Endorsement;
+export default WorkHours;

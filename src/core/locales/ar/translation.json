@@ -27,8 +27,9 @@
     "practitionerClass": "تصنيف الممارس",
     "nationallity": "الجنسية",
     "privateHealthFacility": "المنشأة الصحية الخاصة",
-    "workName": "الاسم",
-    "sector": "القطاع"
+    "city": "المدينة",
+    "workName": "الاسم"
+    
   },
   "daytimepicker": {
     "from": "من",
