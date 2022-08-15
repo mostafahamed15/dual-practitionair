@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { Status } from "../../core/enums/Enum";
-import { createEditOrderPath } from "../../routes/Paths";
+import { createEditOrderPath, waitingOrderPath } from "../../routes/Paths";
 import { acceptOrderPath } from "../../routes/Paths";
 import { cancelOrderPath,rejectOrderPath } from "../../routes/Paths";
 
@@ -26,6 +26,7 @@ export default function TableButton({ status }: TableButtonProps) {
     else if (status === Status.CANCELLED) return cancelOrderPath();
     else if (status === Status.NEW) return createEditOrderPath();
     else if (status === Status.Rejected) return rejectOrderPath();
+    else if (status === Status.Waiting) return waitingOrderPath();
     else return "#";
   };
 
