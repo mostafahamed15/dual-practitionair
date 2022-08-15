@@ -142,6 +142,13 @@ export const personInfo = {
   maxHours: '48 ساعة',
 };
 
+export const privatePersonInfo = {
+  name: 'أحمد عبد العزيز',
+  specialization: 'طبيب أسنان',
+  specializationId: 29399942,
+  specializationEndDate: '10/10/2023',
+   orgName: 'مستشفي محطة جدة',
+};
 export const personInfoPreview = {
   name: 'أحمد عبد العزيز',
   specialization: 'طبيب أسنان',
@@ -169,7 +176,11 @@ export const practitionerData = {
   workName: 'مستشفى محافظة جدة',
   sector: 'وزارة الدفاع',
 };
-
+export const rejectOrder={
+  "rejectorg":"  عبد الله عبد العزيز" ,
+  "rejectDate":" 01/01/2022 ",
+  "rejectReason":"  الأوقات المحددة في الجدول غير مناسبة"
+}
 export const times = [
   "08:30 AM",
   "09:00 AM",

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Status } from "../../core/enums/Enum";
 import { createEditOrderPath } from "../../routes/Paths";
 import { acceptOrderPath } from "../../routes/Paths";
-import { cancelOrderPath } from "../../routes/Paths";
+import { cancelOrderPath,rejectOrderPath } from "../../routes/Paths";
 
 interface TableButtonProps {
   status: string;
@@ -20,11 +20,12 @@ export default function TableButton({ status }: TableButtonProps) {
     else if (status === Status.Rejected) return "outline-reject";
     else return "outline-gray-800";
   };
-
+  
   const navigationPath = (): string => {
     if (status === Status.ACCEPTED) return acceptOrderPath();
     else if (status === Status.CANCELLED) return cancelOrderPath();
     else if (status === Status.NEW) return createEditOrderPath();
+    else if (status === Status.Rejected) return rejectOrderPath();
     else return "#";
   };
 

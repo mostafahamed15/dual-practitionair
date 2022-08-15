@@ -8,6 +8,7 @@ import {
   acceptOrderPath,
   governmentAcceptOrderPath,
   cancelOrderPath,
+  rejectOrderPath,
   practitionerDataPath,
   previewOrderPath,
 } from "./Paths";
@@ -34,6 +35,9 @@ const AcceptOrder = React.lazy(
   () => import("../pages/private-facility/accept-order")
 );
 
+const RejectOrder = React.lazy(
+  () => import("../pages/private-facility/reject-order")
+);
 const CancelOrder = React.lazy(
   () => import("../pages/private-facility/cancel-order")
 );
@@ -94,6 +98,11 @@ export default function Routing() {
             key="AcceptOrder"
             path={acceptOrderPath()}
             element={withSuspenseComponents(<AcceptOrder />)}
+          />
+          <Route
+            key="RejectOrder"
+            path={rejectOrderPath()}
+            element={withSuspenseComponents(<RejectOrder />)}
           />
           <Route
             key="CancelOrder"
