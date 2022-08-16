@@ -50,7 +50,8 @@ function Endorsement() {
          
             <input type="checkbox"/>
             <ul>
-            {Object.values(translate.endorsement.listitems).map((item: string, index: number) => (
+
+           {translate.endorsement.listitems.map((item: string, index: number) => (
           <li className="text-secondary pe-3" key={index}>{item}</li>
         ))}
             </ul>

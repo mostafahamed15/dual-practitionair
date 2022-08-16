@@ -32,7 +32,14 @@ input::placeholder {
   border: 6px solid transparent;
   outline: 1px solid #d0d0d0;
 }
-
+input[type=checkbox]{
+  accent-color:#306c84; ;
+   }
+ ul {
+      list-style-type: "-";
+      padding: 0;
+    }
+   
 $theme-colors: (
   'primary': #00a896,
   'secondary': #306c84,

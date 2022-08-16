@@ -23,7 +23,12 @@ export function acceptOrderPath(): string {
 export function cancelOrderPath(): string {
     return "/private/home/cancel"
 }
-
+export function rejectOrderPath(): string {
+    return "/private/home/reject"
+}
+export function waitingOrderPath(): string {
+    return "/private/home/waiting"
+}
 export function previewOrderPath(): string {
     return "/private/home/data/preview"
 }

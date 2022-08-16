@@ -13,9 +13,9 @@ export default function PreviewOrder() {
 
   return (
     <div className="d-flex flex-column align-items-center">
-      <h4 className="text-secondary pb-1 pt-5 fw-bold">
+      {/* <h4 className="text-secondary pb-1 pt-5 fw-bold">
         {translate.privateFacility.previewOrder.title}
-      </h4>
+      </h4> */}
       <OrderInfo
         organizationInfo={organizationInfo}
         personInfo={personInfoPreview}
@@ -27,14 +27,14 @@ export default function PreviewOrder() {
           className="text-white rounded-pill fw-bold py-2 w-25 ms-3"
           onClick={() => setPreviewModal(true)}
         >
-          {translate.privateFacility.previewOrder.sendOrder}
+          {/* {translate.privateFacility.previewOrder.sendOrder} */}
         </Button>
         <Button
           variant="secondary"
           className="text-white rounded-pill fw-bold py-2 w-25"
           onClick={() => navigate(privateHomePath())}
         >
-          {translate.privateFacility.previewOrder.cancel}
+          {/* {translate.privateFacility.previewOrder.cancel} */}
         </Button>
       </div>
       <ModalPopup
