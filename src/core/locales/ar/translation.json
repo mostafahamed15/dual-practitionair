@@ -110,16 +110,23 @@
         "period": " 12 شهر"
       }
     },
-"rejectOrder":{
+     "rejectOrder":{
   "rejectorg":"جهة الرفض",
   "rejectDate":"تاريخ الرفض ",
   "rejectReason":" سبب الرفض"
-},
-"waitingOrder":{
+    },
+     "waitingOrder":{
   "note": "يتطلب تأكيد القبول خصم  XXXX من نقاطك",
   "confirm": "تأكيد القبول",
   "cancel": "الغاء الطلب"
-},
+    },
+    "renewOrder":{
+    "title":"تجديد طلب موافقة عمل خارج أوقات الدوام الرسمي",
+    "yes": "تجديد الطلب" ,
+    "no": "الغاء",
+    "accept":"  سيتم  تجديد الطلب  ، هل ترغب بالاستمرار  ؟ ",
+    "acceptConfirm": "تم  ارسال الطلب للتجديد"
+    },
 "waitingOrderModal":{
   "yes": "خصم النقاط",
   "no": "الغاء",

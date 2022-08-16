@@ -36,3 +36,6 @@ export function previewOrderPath(): string {
 export function practitionerDataPath(): string {
     return "/private/home/data"
 }
+export function renewOrderPath(): string {
+    return "/private/home/renew"
+}

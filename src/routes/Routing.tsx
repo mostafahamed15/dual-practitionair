@@ -10,6 +10,7 @@ import {
   cancelOrderPath,
   rejectOrderPath,
   waitingOrderPath,
+  renewOrderPath,
   practitionerDataPath,
   previewOrderPath,
 } from "./Paths";
@@ -44,6 +45,9 @@ const WaitingOrder = React.lazy(
   () => import("../pages/private-facility/waiting-order")
 );
 
+const RenewOrder = React.lazy(
+  () => import("../pages/private-facility/renew-order")
+);
 const CancelOrder = React.lazy(
   () => import("../pages/private-facility/cancel-order")
 );
@@ -114,6 +118,11 @@ export default function Routing() {
             key="WaitingOrder"
             path={waitingOrderPath()}
             element={withSuspenseComponents(<WaitingOrder/>)}
+          />
+           <Route
+            key="RenewOrder"
+            path={renewOrderPath()}
+            element={withSuspenseComponents(<RenewOrder/>)}
           />
           <Route
             key="CancelOrder"
