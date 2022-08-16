@@ -23,6 +23,7 @@ export type practitionerData = {
   practitionerClass: string;
   nationallity: string;
   privateHealthFacility: string;
+  city: string;
   workName: string;
-  sector: string;
+
 };

@@ -4,7 +4,6 @@ import translate from "../../core/locales/ar/translation.json";
 import { AiOutlineSearch } from "react-icons/ai";
 import { Status } from "../../core/enums/Enum";
 import TableLink from "../table-link";
-import TableButton from "../tabel-button";
 import GovernmentTableButton from "../government-table-button";
 interface GovernmentTableProps {
   titles: string[];
@@ -65,7 +64,6 @@ export default function GovernmentTable({ titles, rows }: GovernmentTableProps) 
               {Object.entries(row).map((data, index) =>
                 data[0] === "status" ? (
                   <td key={index}>
-                    {/* <TableButton status={data[1]} /> */}
                     <GovernmentTableButton status={data[1]}/>
                   </td>
                 ) : (

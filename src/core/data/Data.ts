@@ -136,9 +136,9 @@ export const personInfo = {
   specialization: 'طبيب أسنان',
   specializationId: 29399942,
   specializationEndDate: '10/10/2023',
+  orgName: 'مستشفي محطة جدة',
   startEndAcceptDate: '10/10/2020',
   acceptPeriod: '12شهر ',
-  orgName: 'مستشفي محطة جدة',
   maxHours: '48 ساعة',
 };
 
@@ -173,8 +173,9 @@ export const practitionerData = {
   practitionerClass: 'استشاري',
   nationallity: 'سعودي',
   privateHealthFacility: 'لديه رخصة سارية',
-  workName: 'مستشفى محافظة جدة',
-  sector: 'وزارة الدفاع',
+  city: ' الرياض ',
+  workName: 'مستشفى الملك خالد',
+ 
 };
 export const rejectOrder={
   "rejectorg":"  عبد الله عبد العزيز" ,

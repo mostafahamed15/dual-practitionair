@@ -1,6 +1,6 @@
 import OrderInfo from "../../../components/order-info";
 import translate from "../../../core/locales/ar/translation.json";
-import { organizationInfo, personInfo } from "../../../core/data/Data";
+import { organizationInfo, personInfo, privatePersonInfo } from "../../../core/data/Data";
 import WorkSchedule from "../../../components/work-schedule";
 import PeriodOfWork from "../../../components/period-of-work";
 import { Button } from "react-bootstrap";
@@ -10,6 +10,7 @@ import { useState } from "react";
 
 
 export default function CreateEditOrder() {
+  const [checked, setChecked] = useState<boolean>(false);
   const [acceptModal, setAcceptModal] = useState<boolean>(false);
   const conditions = translate.governmenFacility.previewOrder.conditions;
   return (
@@ -17,7 +18,7 @@ export default function CreateEditOrder() {
       <h4 className="text-secondary pb-1 pt-5 fw-bold text-center">
         {translate.governmenFacility.previewOrder.title}
       </h4>
-      <OrderInfo organizationInfo={organizationInfo} personInfo={personInfo} />
+      <OrderInfo organizationInfo={organizationInfo} personInfo={privatePersonInfo} />
       <WorkSchedule />
       <PeriodOfWork />
       <Container className="  border-top  border-gray-300 pt-5">
@@ -25,7 +26,7 @@ export default function CreateEditOrder() {
           {translate.endorsement.title}
         </h4>
         <div className="d-flex align-items-start  ">
-          <input type="checkbox" className="ms-3" />
+          <input type="checkbox" className="ms-3"   onChange={() => setChecked(!checked)}/>
           <ul className="border border-gray-200 p-5 rounded">
             <li className="text-gray-800  pe-4">
               {translate.governmenFacility.previewOrder.endorsement1}
@@ -50,6 +51,7 @@ export default function CreateEditOrder() {
       <div className="d-flex justify-content-center w-50 mb-4">
      <Button
           variant="primary"
+          disabled={!checked}
           className="text-white rounded-pill fw-bold py-2 w-25 ms-3"
           onClick={() => setAcceptModal(true)}
         >
