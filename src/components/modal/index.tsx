@@ -21,7 +21,7 @@ export default function ModalPopup({
   confirmMessage,
   rejectConfirm,
   rejectQuestion,
-  reject
+  reject=true
 }: ModalPopupProps) {
   const [isConfirmed, setIsConfirmed] = useState<boolean>(!question);
   const location = useLocation();
