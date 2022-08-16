@@ -7,9 +7,9 @@ return (
         {translation.title}
       </h5>
       <div className="d-flex justify-content-between text-center">
-        {translation.schedule.map((item) => {
+        {translation.schedule.map((item,index) => {
           return (
-            <div className={`d-flex flex-column px-5 py-3 ${item.text_color}`}>
+            <div key={index} className={`d-flex flex-column px-5 py-3 ${item.text_color}`}>
               <strong>{item.day}</strong>
               <p className="pt-4">{item.time}</p>
             </div>

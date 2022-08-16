@@ -12,6 +12,7 @@ import { useState } from "react";
 export default function CreateEditOrder() {
   const [checked, setChecked] = useState<boolean>(false);
   const [acceptModal, setAcceptModal] = useState<boolean>(false);
+  const [rejectModal, setRejectModal] = useState<boolean>(false);
   const conditions = translate.governmenFacility.previewOrder.conditions;
   return (
     <div className="d-flex flex-column align-items-center">
@@ -53,13 +54,22 @@ export default function CreateEditOrder() {
           variant="primary"
           disabled={!checked}
           className="text-white rounded-pill fw-bold py-2 w-25 ms-3"
-          onClick={() => setAcceptModal(true)}
+          onClick={() => {
+            setAcceptModal(true)
+            setRejectModal(true)
+          }
+          }
         >
           {translate.governmenFacility.acceptOrder.confirm}
         </Button>
         <Button
           variant="reject"
           className="text-white rounded-pill fw-bold py-2 w-25"
+          onClick={() => {
+            setAcceptModal(true)
+            setRejectModal(false)
+          }
+          }
         >
           {translate.governmenFacility.acceptOrder.reject}
         </Button>
@@ -71,6 +81,10 @@ export default function CreateEditOrder() {
         handleClose={() => setAcceptModal(false)}
         question={translate.modal.accept}
         confirmMessage={translate.modal.acceptConfirm}
+        rejectConfirm={translate.governmenFacility.createOrder.rejectConfirm}
+        rejectQuestion={translate.governmenFacility.createOrder.reject}
+        reject={rejectModal}
+
       />
     </div>
   );
