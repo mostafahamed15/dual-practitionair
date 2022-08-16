@@ -64,6 +64,15 @@
     "acceptOrder": {
       "confirm": "قبول",
       "reject": "رفض"
+    },
+    "createOrder":{
+      "placeholder":"اكتب سبب رفض الطلب هنا",
+     "reject":"يرجى كتابة سبب رفض الطلب",
+     "send":"ارسال",
+     "cancel":"الغاء",
+     "rejectConfirm":"تم رفض الطلب بنجاح"
+    
+
     }
   },
   "privateFacility": {
