@@ -17,6 +17,12 @@ export function createEditOrderPath(): string {
 export function governmentAcceptOrderPath(): string {
     return "/government/home/accept"
 }
+export function confirmRejectPath(): string {
+    return "/government/home/confirmReject"
+}
+export function successRejectPath(): string {
+    return "/government/home/success"
+}
 export function acceptOrderPath(): string {
     return "/private/home/accept"
 }
