@@ -1,7 +1,7 @@
 import { times } from "../../core/data/Data";
 import translate from "../../core/locales/ar/translation.json";
 import Styles from "./styles.module.scss";
-import { useState,useRef,useEffect } from "react";
+import { useState } from "react";
 
 interface DayTimePickerProps {
   day: string;
@@ -10,35 +10,27 @@ interface DayTimePickerProps {
 export default function DayTimePicker({ day }: DayTimePickerProps) {
 const [starthours, setStartHours] = useState(0)
   const [endhours, setEndHours] = useState(0)
-  const [sum, setSum] = useState( starthours- endhours)
-  
+  const [sum, setSum] = useState(0)
 
-  const handelefromChange=(e:any)=>{
-   let time =e.target.value.split(" ")
-  const [hoursPart, minutesPart] = time[0].split(":");
-  let hours= Number(hoursPart) + Number(minutesPart) / 60;
- setStartHours(hours)
-    
+const handelOnChange=(e:any)=>{
+  let time =e.target.value.split(" ")
+ const [hoursPart, minutesPart] = time[0].split(":");
+ let hours= Number(hoursPart) + Number(minutesPart) / 60;
+ let {name}=e.target
+  if(name==="startHours"){
+    setStartHours(hours)
   }
+  else if(name==="endHours"){
+    setEndHours(hours)
+  }
+}
 
-  const handeletoChange=(e:any)=>{
-   let time =e.target.value.split(" ")
-  const [hoursPart, minutesPart] = time[0].split(":");
-  let hours= Number(hoursPart) + Number(minutesPart) / 60;
-  setEndHours(hours)
- 
-  }
-  console.log(starthours);
-  console.log(endhours);
-  const prevCountRef = useRef(0);
- useEffect(()=>{
- 
-  starthours > endhours ?(setSum(starthours -endhours)):(setSum
-    (endhours-starthours) )
-    prevCountRef.current = sum;
-    console.log(prevCountRef.current);
-    console.log(sum);
-  })
+// useEffect(()=>{
+//   starthours > endhours ?(setSum(starthours -endhours)):(setSum
+//     (endhours-starthours) )
+// })
+
+
   return (
     <div className="d-flex flex-column ">
  
@@ -50,7 +42,7 @@ const [starthours, setStartHours] = useState(0)
       <div className="d-flex flex-column justify-content-center align-items-center bg-gray-200 border border-1 border-gray-700 rounded mt-1 mx-3 px-2 py-3 h-50">
         <div className="d-flex text-secondary align-items-center mt-3">
           <p>{translate.daytimepicker.from}</p>
-          <select className={`${Styles.select}`}  value={starthours} onChange={handelefromChange}>
+          <select className={`${Styles.select}`}  name="startHours" value={starthours} onChange={handelOnChange}>
             <option>{translate.daytimepicker.choose}</option>
             {times.map((time: string, index: number) => (
               <option
@@ -66,7 +58,7 @@ const [starthours, setStartHours] = useState(0)
         </div>
         <div className="d-flex text-secondary mb-2">
           <p>{translate.daytimepicker.to}</p>
-          <select className={`${Styles.select}`} value={endhours} onChange={handeletoChange}>
+          <select className={`${Styles.select}`} name="endHours" value={endhours} onChange={handelOnChange}>
             <option>{translate.daytimepicker.choose}</option>
             {times.map((time: string, index: number) => (
               <option
