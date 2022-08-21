@@ -5,6 +5,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { Status } from "../../core/enums/Enum";
 import TableLink from "../table-link";
 import TableButton from "../tabel-button";
+import { navigationPath, variant } from "../../core/helpers/Helpers";
 interface MultiColTableProps {
   titles: string[];
   rows: Object[];
@@ -64,7 +65,7 @@ export default function MultiColTable({ titles, rows }: MultiColTableProps) {
               {Object.entries(row).map((data, index) =>
                 data[0] === "status" ? (
                   <td key={index}>
-                    <TableButton status={data[1]} />
+                    <TableButton status={data[1]} variant={variant} navigationPath={navigationPath}/>
                   </td>
                 ) : (
                   <td key={index}>{data[1]}</td>

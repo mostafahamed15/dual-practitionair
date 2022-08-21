@@ -5,7 +5,7 @@ import instance from "./baseInstance";
 export const getPracticeInfo = () => {
     return instance.get<PracticeInfo>("practitioner/info",{
         params: {
-            NationalID:9898989898,
+            NationalID:1002495628,
             DateOfBirth:'2022-08-05'
         }});
   };
