@@ -5,16 +5,14 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { Status } from "../../core/enums/Enum";
 import TableLink from "../table-link";
 import TableButton from "../tabel-button";
-import { navigationPath, variant } from "../../core/helpers/Helpers";
+import { privateBtnNavigationPath, privateBtnVariant } from "../../core/helpers/Helpers";
 interface MultiColTableProps {
   titles: string[];
   rows: Object[];
 }
-
 export default function MultiColTable({ titles, rows }: MultiColTableProps) {
-  const [searchResult, setSearchResult] = useState<Object[]>(rows);
-
-  const filteredRows = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const [searchResult, setSearchResult] = useState<Object[]>(rows);
+    const filteredRows = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newRows = rows.filter((data) =>
       Object.values(data).toString().includes(e.target.value)
     );
@@ -65,7 +63,7 @@ export default function MultiColTable({ titles, rows }: MultiColTableProps) {
               {Object.entries(row).map((data, index) =>
                 data[0] === "status" ? (
                   <td key={index}>
-                    <TableButton status={data[1]} variant={variant} navigationPath={navigationPath}/>
+                    <TableButton status={data[1]} variant={privateBtnVariant} navigationPath={privateBtnNavigationPath}/>
                   </td>
                 ) : (
                   <td key={index}>{data[1]}</td>

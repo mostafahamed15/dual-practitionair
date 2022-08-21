@@ -29,6 +29,7 @@ export default function TableLink({ status }: ModalPopupProps) {
          size="lg"
          disabled={status === Status.DONE}
          onClick={() =>navigate(confirmRejectPath())}
+         className="border-0"
        >
          <MdOutlineCancel className="text-danger" />
        </Button>
@@ -39,6 +40,7 @@ export default function TableLink({ status }: ModalPopupProps) {
         size="lg"
         disabled={status === Status.DONE}
         onClick={() => setCancelModal(true)}
+        className="border-0"
       >
         <MdOutlineCancel className="text-danger" />
       </Button>
@@ -50,7 +52,7 @@ export default function TableLink({ status }: ModalPopupProps) {
           variant="none"
           size="lg"
          onClick={() => navigate(renewOrderPath())}
-         
+         className="border-0"
         >
           <HiOutlineCheckCircle className="text-primary" />
         </Button>
