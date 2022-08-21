@@ -1,5 +1,5 @@
 export function home(): string {
-    return "/"
+    return "/login/:id"
 }
 
 export function governmentHomePath(): string {

@@ -1,13 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import DataBox from "../../../components/data-box";
 import { practitionerData } from "../../../core/data/Data";
 import translate from "../../../core/locales/ar/translation.json";
+import { getPracticeInfo } from "../../../networking/practitioner";
 import { previewOrderPath } from "../../../routes/Paths";
 
 export default function PractitionerData() {
  const navigate = useNavigate();
+ useEffect(()=>{
+  getPracticeInfo()
+   .then((response) => {
+     let data=response.data
+      console.log(data);
+   })
+   .catch((e) => {
+     console.log(e);
+   })
+},[])
   return (
     <div className="pt-4">
      <h4 className="text-secondary mt-5 mb-3 text-center">
