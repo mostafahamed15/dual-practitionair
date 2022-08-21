@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Table from "../../../components/table";
 import translate from "../../../core/locales/ar/translation.json";
 import { dummyTitles, dummyRows } from "../../../core/data/Data";
@@ -8,6 +8,7 @@ import Styles from "./styles.module.scss";
 import { PrivateHomeValidation } from "../../../core/helpers/Helpers";
 import { useNavigate } from "react-router-dom";
 import { practitionerDataPath } from "../../../routes/Paths";
+import { getPrivateOrgData } from "../../../networking/privateOrgApis";
 
 export default function PrivateHome() {
   const [idError, setIdError] = useState<boolean>(false);
@@ -23,7 +24,16 @@ export default function PrivateHome() {
     },
     validationSchema: PrivateHomeValidation("birthDate", "nationalId"),
   });
-
+useEffect(()=>{
+   getPrivateOrgData()
+    .then((response) => {
+      let data=response.data
+       console.log(data);
+    })
+    .catch((e) => {
+      console.log(e);
+    })
+},[])
   return (
     <div className="vh-100 pt-4">
       <strong className="text-secondary m-4 h4">

@@ -3,16 +3,29 @@ import { organizationInfo, privatePersonInfo } from "../../../core/data/Data";
 import translate from "../../../core/locales/ar/translation.json";
 import { Button, Container } from "react-bootstrap";
 import ModalPopup from "../../../components/modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { privateHomePath } from "../../../routes/Paths";
 import DayTimePicker from "../../../components/day-time-picker";
 import WorkHours from "../../../components/work-hours";
+import { getPracticeInfo, getPractitionerRequests } from "../../../networking/practitioner";
 
 export default function PreviewOrder() {
   const [previewModal, setPreviewModal] = useState<boolean>(false);
   const navigate = useNavigate();
   const [checked, setChecked] = useState<boolean>(false);
+useEffect(()=>{
+
+  
+    getPracticeInfo()
+     .then((response) => {
+       let data=response.data
+        console.log(data);
+     })
+     .catch((e) => {
+       console.log(e);
+     })
+ },[])
   return (
     <div className="d-flex flex-column ">
       <h4 className="text-secondary pb-1 pt-5 fw-bold text-center">
