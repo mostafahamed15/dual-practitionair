@@ -14,14 +14,27 @@ export default function PreviewOrder() {
   const [previewModal, setPreviewModal] = useState<boolean>(false);
   const navigate = useNavigate();
   const [checked, setChecked] = useState<boolean>(false);
+  const [privateOrgInfo, setPrivateOrgInfo]=useState({})
+  const [personInfo,setPersonInfo]=useState({})
 useEffect(()=>{
-
-  
-    getPracticeInfo()
+  getPracticeInfo()
      .then((response) => {
-       let data=response.data
+       let data=response.data.data
         console.log(data);
-     })
+       let privateOrgInfo= Object.values(data.privateEstablishmentInfo).map((item)=>{
+            return item
+        })
+        setPrivateOrgInfo({
+          orgName: privateOrgInfo[9],
+          type: privateOrgInfo[5],
+          city: privateOrgInfo[2],
+          orgId: privateOrgInfo[8],
+          expDate: '10/10/2023',
+          governorate: 'المديزية العامةللشئون الصحية بمحافظة جدة',
+        })
+        console.log(privateOrgInfo);
+        
+ })
      .catch((e) => {
        console.log(e);
      })

@@ -1,11 +1,8 @@
 import { Col, Container, Row } from "react-bootstrap";
 import translate from "../../core/locales/ar/translation.json";
-import { practitionerData } from "../../core/types/Types";
-
 interface DataBoxProps {
-  data: practitionerData;
+   data: object;
 }
-
 export default function DataBox({ data }: DataBoxProps) {
   return (
     <Container
