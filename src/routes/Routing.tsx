@@ -13,6 +13,8 @@ import {
   renewOrderPath,
   practitionerDataPath,
   previewOrderPath,
+  confirmRejectPath ,
+  successRejectPath
 } from "./Paths";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
@@ -24,6 +26,12 @@ const GovernmentHome = React.lazy(
 );
 const GovernmentAcceptOrder = React.lazy(
   () => import("../pages/government-facility/accept-order")
+);
+const ConfirmReject = React.lazy(
+  () => import("../pages/government-facility/confirm-reject")
+);
+const SuccessReject = React.lazy(
+  () => import("../pages/government-facility/success-reject")
 );
 const PrivateHome = React.lazy(
   () => import("../pages/private-facility/private-home")
@@ -93,6 +101,16 @@ export default function Routing() {
             key="GovernmentAcceptOrder"
             path={governmentAcceptOrderPath()}
             element={withSuspenseComponents(<GovernmentAcceptOrder />)}
+          />
+          <Route
+            key="ConfirmReject"
+            path={confirmRejectPath()}
+            element={withSuspenseComponents(<ConfirmReject />)}
+          />
+          <Route
+            key="SuccessReject"
+            path={successRejectPath()}
+            element={withSuspenseComponents(<SuccessReject />)}
           />
           <Route
             key="PrivateHome"
