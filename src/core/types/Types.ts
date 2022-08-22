@@ -25,5 +25,8 @@ export type practitionerData = {
   privateHealthFacility: string;
   city: string;
   workName: string;
-
+};
+export type dayHours = {
+  name: string, 
+  sum: number
 };

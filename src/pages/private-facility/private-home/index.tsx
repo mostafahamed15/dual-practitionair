@@ -24,16 +24,15 @@ export default function PrivateHome() {
     },
     validationSchema: PrivateHomeValidation("birthDate", "nationalId"),
   });
-useEffect(()=>{
-   getPrivateOrgData()
-    .then((response) => {
-      let data=response.data
-       console.log(data);
-    })
-    .catch((e) => {
-      console.log(e);
-    })
-},[])
+  useEffect(() => {
+    getPrivateOrgData()
+      .then((response) => {
+        let data = response.data;
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
   return (
     <div className="vh-100 pt-4">
       <strong className="text-secondary m-4 h4">

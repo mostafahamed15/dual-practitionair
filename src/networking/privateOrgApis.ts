@@ -10,6 +10,6 @@ export const getPrivateOrgData = () => {
             ParctNId:""
         }});
   };
-  export const PrivateAddRequest = (data: AddRequest) => {
+  export const privateAddRequest = (data: AddRequest) => {
   return instance.post<AddRequestResponse>("privateorganization/review-request-and-deduct", data);
 };
