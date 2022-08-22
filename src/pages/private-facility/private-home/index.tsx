@@ -24,6 +24,7 @@ export default function PrivateHome() {
     },
     validationSchema: PrivateHomeValidation("birthDate", "nationalId"),
   });
+
 useEffect(()=>{
    getPrivateOrgData()
     .then((response) => {
@@ -35,6 +36,7 @@ useEffect(()=>{
       console.log(e);
     })
 },[])
+
   return (
     <div className="vh-100 pt-4">
       <strong className="text-secondary m-4 h4">

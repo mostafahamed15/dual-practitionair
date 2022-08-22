@@ -3,15 +3,19 @@ import { useNavigate } from "react-router-dom";
 import { Status } from "../../core/enums/Enum";
 import { createEditOrderPath, waitingOrderPath } from "../../routes/Paths";
 import { acceptOrderPath } from "../../routes/Paths";
-import { cancelOrderPath,rejectOrderPath } from "../../routes/Paths";
+import { cancelOrderPath, rejectOrderPath } from "../../routes/Paths";
 
 interface TableButtonProps {
   status?: string;
-  variant:(status:string) => string,
-  navigationPath:(status:string) => string
+  variant: (status: string) => string;
+  navigationPath: (status: string) => string;
 }
 
-export default function TableButton({ status,variant,navigationPath }: TableButtonProps) {
+export default function TableButton({
+  status,
+  variant,
+  navigationPath,
+}: TableButtonProps) {
   const navigate = useNavigate();
 
   // const variant = (): string => {
@@ -22,7 +26,7 @@ export default function TableButton({ status,variant,navigationPath }: TableButt
   //   else if (status === Status.Rejected) return "outline-reject";
   //   else return "outline-gray-800";
   // };
-  
+
   // const navigationPath = (): string => {
   //   if (status === Status.ACCEPTED) return acceptOrderPath();
   //   else if (status === Status.CANCELLED) return cancelOrderPath();
@@ -31,7 +35,7 @@ export default function TableButton({ status,variant,navigationPath }: TableButt
   //   else if (status === Status.Waiting) return waitingOrderPath();
   //   else return "#";
   // };
-let statu=status||""
+  let statu = status || "";
   return (
     <Button
       className="fw-bold w-75 my-2"
