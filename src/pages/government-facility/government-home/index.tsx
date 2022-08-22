@@ -1,16 +1,16 @@
-import Table from "../../../components/table";
 import translate from "../../../core/locales/ar/translation.json";
 import { governmentTableTitles, governmentTableRows } from "../../../core/data/Data";
 import GovernmentTable from "../../../components/government-table";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getGovernmentDataLevel1, getGovernmentDataLevel2 } from "../../../networking/governmentOrgApis";
 
 export default function GovernmentHome() {
-
+const [govTableRows,setGovTableRows]=useState<any>([])
 useEffect(()=>{
 getGovernmentDataLevel1()
 .then((response) => {
   let data=response.data
+  setGovTableRows(data)
    console.log(data);
 })
 .catch((e) => {
@@ -27,7 +27,7 @@ getGovernmentDataLevel1()
           {translate.privateFacility.home.title}
         </strong>
         <hr className="text-gray-400" />
-        <GovernmentTable titles={governmentTableTitles} rows={governmentTableRows}   />
+        <GovernmentTable titles={governmentTableTitles} rows={govTableRows}   />
       </div>
     </div>
   );
