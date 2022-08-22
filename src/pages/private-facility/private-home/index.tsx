@@ -9,8 +9,8 @@ import { PrivateHomeValidation } from "../../../core/helpers/Helpers";
 import { useNavigate } from "react-router-dom";
 import { practitionerDataPath } from "../../../routes/Paths";
 import { getPrivateOrgData } from "../../../networking/privateOrgApis";
-
 export default function PrivateHome() {
+  const [privateTableRows,setPrivateTableRows]=useState<any>([])
   const [idError, setIdError] = useState<boolean>(false);
   const [birthError, setBirthError] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -24,15 +24,19 @@ export default function PrivateHome() {
     },
     validationSchema: PrivateHomeValidation("birthDate", "nationalId"),
   });
-  useEffect(() => {
-    getPrivateOrgData()
-      .then((response) => {
-        let data = response.data;
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  }, []);
+
+useEffect(()=>{
+   getPrivateOrgData()
+    .then((response) => {
+      let data=response.data
+      setPrivateTableRows(data)
+       console.log(data);
+    })
+    .catch((e) => {
+      console.log(e);
+    })
+},[])
+
   return (
     <div className="vh-100 pt-4">
       <strong className="text-secondary m-4 h4">
@@ -115,7 +119,7 @@ export default function PrivateHome() {
             {translate.privateFacility.home.ordersStatus}
           </h5>
           <hr className="text-gray-400" />
-          <Table titles={dummyTitles} rows={dummyRows} />
+          <Table titles={dummyTitles} rows={privateTableRows} />
         </div>
       </div>
     </div>
