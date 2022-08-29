@@ -2,10 +2,10 @@ import OrderInfo from "../../../components/order-info";
 import { organizationInfo, privatePersonInfo } from "../../../core/data/Data";
 import translate from "../../../core/locales/ar/translation.json";
 import { GiCancel } from "react-icons/gi";
-import { Status } from "../../../core/enums/Enum";
 import { Button } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import RejectReason from "../../../components/reject-reason";
+
 export default function RejectOrder() {
   const navigate = useNavigate();
   const location = useLocation();

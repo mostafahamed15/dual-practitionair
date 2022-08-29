@@ -32,7 +32,7 @@ export default function WaitingOrderModal({
           <>
             <AiOutlineCheckCircle size={70} className="text-primary my-2" />
             <p className="text-secondary fw-bold ">{confirmMessage}</p>
-            <p className="text-secondary fw-bold ">{translate.privateFacility.waitingOrderModal.note}</p>
+            <p className="text-secondary fw-bold ">{translate.modal.note}</p>
           </>
         ) : (
           <>
@@ -46,44 +46,42 @@ export default function WaitingOrderModal({
       </Modal.Body>
       <Modal.Footer className="d-flex border-0 justify-content-center mb-3">
         {isConfirmed ? (
-<div className="d-flex justify-content-center flex-column">
-<div className=" mb-4 ">
+          <div className="d-flex justify-content-center flex-column">
+            <div className=" mb-4 ">
+              <Button
+                variant="secondary text-white rounded-pill mx-3 py-2 px-3"
+                onClick={() => {
+                  handleClose();
+                  navigate(location.pathname.split("/home")[0] + "/home");
+                }}
+              >
+                {translate.modal.back}
+              </Button>
+              <Button
+                variant="primary"
+                className="text-white rounded-pill fw-bold py-2  ms-3"
+              >
+                {translate.privateFacility.acceptOrder.certificateReview}
+              </Button>
+            </div>
 
-<Button
-    variant="secondary text-white rounded-pill mx-3 py-2 px-3"
-    onClick={() => {
-     handleClose();
-    navigate(location.pathname.split("/home")[0] + "/home");
-    }}
-  >
-    {translate.modal.back}
-  </Button>
-  <Button
-  variant="primary"
-  className="text-white rounded-pill fw-bold py-2  ms-3"
->
-  {translate.privateFacility.acceptOrder.certificateReview}
-</Button>
-
-</div>
-
-<a href="#" className=" text-primary fw-bold text-center">{translate.privateFacility.waitingOrderModal.showlicense}</a>
-
-</div>
- 
+            <a href="#" className=" text-primary fw-bold text-center">
+              {translate.modal.showlicense}
+            </a>
+          </div>
         ) : (
           <>
             <Button
               variant="secondary w-25 text-white rounded-pill mx-3"
               onClick={handleClose}
             >
-              {translate.privateFacility.waitingOrderModal.no}
+              {translate.modal.cancelation}
             </Button>
             <Button
               variant="primary w-25 text-white rounded-pill mx-3"
               onClick={() => setIsConfirmed(true)}
             >
-              {translate.privateFacility.waitingOrderModal.yes}
+              {translate.modal.deduct}
             </Button>
           </>
         )}

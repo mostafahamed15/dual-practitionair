@@ -1,0 +1,32 @@
+FROM node:14-alpine AS build-env
+WORKDIR /src
+COPY package*.json ./
+# RUN npm install --add https://nexus.leandevclan.com/repository/npm-group/
+RUN npm install
+COPY . .
+# Package.json must include build:all script which should create a folder for each enviroement: base, development, testing, staging, production, recovery
+RUN npm run build:dev
+RUN mv /src/build /src/build-dev
+
+RUN npm run build:test
+RUN mv /src/build /src/build-test
+
+RUN npm run build:prod
+RUN mv /src/build /src/build-prod
+
+RUN npm run build:staging
+RUN mv /src/build /src/build-staging
+# Use nginx-envdir image which
+FROM hub.leandevclan.com/devops/nginx-envdir
+
+
+COPY --from=build-env /src/build-dev /usr/share/nginx/html/development
+COPY --from=build-env /src/build-test /usr/share/nginx/html/testing
+COPY --from=build-env /src/build-prod /usr/share/nginx/html/production
+COPY --from=build-env /src/build-staging /usr/share/nginx/html/staging
+
+
+# Copy default nginx configuration if exists
+#COPY nginx.conf* /etc/nginx/conf.d/default.conf
+# Ensure ENVDIR is in default.conf file
+#RUN [ -z "$(cat nginx.conf | grep ENVDIR)" ] && >&2 echo "nginx.conf must include ENVDIR string to be replaced with $ENVIRONMENT value"

@@ -1,50 +1,47 @@
-import { Link, useParams } from 'react-router-dom';
-import { privateHomePath, governmentHomePath } from '../../routes/Paths';
-import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { Login } from '../../networking/loginApi';
+import { Navigate, useParams } from 'react-router-dom';
+import { Login } from '../../services/loginApi';
 
 export default function Home() {
-  const dispatch = useDispatch();
   const { id } = useParams();
-  const [error, setError] = useState<boolean>(false);
+  const [role, setRole] = useState<any>();
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<any>(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const redirect =
+    role && role === '983' ? (
+      <Navigate to="/private/home" replace={true} />
+    ) : (
+      <Navigate to="/government/home" replace={true} />
+    );
+
   let data = {
     code: id,
   };
   useEffect(() => {
     Login(data)
       .then((response) => {
-        let data = response.data;
+        let data = response.data.data;
         localStorage.setItem('token', data.ticket);
-        console.log(data);
-        setError(false);
+        localStorage.setItem('role', data.role);
+        sessionStorage.setItem('re', 'ddd');
+        setRole(data.role);
+        setLoading(false);
       })
       .catch((e) => {
         setError(true);
-        console.log(e);
+        setLoading(false);
+        setErrorMessage(e.response.data.message || 'Server Error');
       });
-  });
+  }, []);
   return (
     <>
-      {!error ? (
-        <div>
-          <nav>
-            <Link
-              onClick={() => dispatch({ type: 'GOVERNMENT' })}
-              to={governmentHomePath()}
-            >
-              government
-            </Link>{' '}
-            <Link
-              onClick={() => dispatch({ type: 'PRIVATE' })}
-              to={privateHomePath()}
-            >
-              private
-            </Link>
-          </nav>
-        </div>
+      {loading ? (
+        <h3>Loading..</h3>
+      ) : error ? (
+        <h6 style={{ color: 'red' }}>{errorMessage}</h6>
       ) : (
-        <div>error</div>
+        redirect
       )}
     </>
   );

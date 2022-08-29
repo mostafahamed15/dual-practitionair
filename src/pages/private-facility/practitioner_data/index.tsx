@@ -1,33 +1,31 @@
-import { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import DataBox from "../../../components/data-box";
-import { practitionerData } from "../../../core/data/Data";
-import translate from "../../../core/locales/ar/translation.json";
-import { getPracticeInfo } from "../../../networking/practitioner";
-import { previewOrderPath } from "../../../routes/Paths";
+import { Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import DataBox from '../../../components/data-box';
+import translate from '../../../core/locales/ar/translation.json';
+import { previewOrderPath } from '../../../routes/Paths';
+import { Store } from '../../../store/store';
 
 export default function PractitionerData() {
- const navigate = useNavigate();
- useEffect(()=>{
-  getPracticeInfo()
-   .then((response) => {
-     let data=response.data
-      console.log(data);
-   })
-   .catch((e) => {
-     console.log(e);
-   })
-},[])
+  const navigate = useNavigate();
+  const info = {
+    practitionerName: Store.getState().info?.practitionerInfo?.fullNameAr,
+    practitionerId: 'سارية',
+    practitionerClass: Store.getState().info?.practitionerInfo?.specialityAr,
+    nationallity: 'سعودي',
+    privateHealthFacility: 'لديه رخصة سارية',
+    city: Store.getState().info?.govEstablishmentInfo?.cityAr,
+    workName: Store.getState().info?.govEstablishmentInfo?.nameAr,
+  };
+
   return (
     <div className="pt-4">
-     <h4 className="text-secondary mt-5 mb-3 text-center">
+      <h4 className="text-secondary mt-5 mb-3 text-center">
         {translate.privateFacility.practitionerData.practitionerData}
       </h4>
-      <DataBox data={practitionerData} />
+      <DataBox data={info} />
       <div className="d-flex flex-column align-items-center">
-       <Button
-       variant="secondary"
+        <Button
+          variant="secondary"
           className="text-white px-5 rounded-pill fw-bold my-5"
           onClick={() => navigate(previewOrderPath())}
         >
