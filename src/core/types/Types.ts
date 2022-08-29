@@ -17,7 +17,7 @@ export type OrganizationInfo = {
   expDate: string;
   governorate: string;
 };
-export type practitionerData = {
+export type PractitionerInfo = {
   practitionerName: string;
   practitionerId: string;
   practitionerClass: string;
@@ -27,6 +27,6 @@ export type practitionerData = {
   workName: string;
 };
 export type dayHours = {
-  name: string, 
+  day: string, 
   sum: number
 };

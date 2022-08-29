@@ -1,5 +1,5 @@
-import { Breadcrumb } from 'react-bootstrap';
-import Breadcrumbs from '../bread-crumbs';
+import { Breadcrumb } from "react-bootstrap";
+import Breadcrumbs from "../bread-crumbs";
 
 interface subHeaderProps {
   breadCrumbs: {

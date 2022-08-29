@@ -1,9 +1,9 @@
-import { Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import { Status } from "../../core/enums/Enum";
-import { createEditOrderPath, waitingOrderPath } from "../../routes/Paths";
-import { acceptOrderPath } from "../../routes/Paths";
-import { cancelOrderPath, rejectOrderPath } from "../../routes/Paths";
+import { Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { Status } from '../../core/enums/Enum';
+import { createEditOrderPath, waitingOrderPath } from '../../routes/Paths';
+import { acceptOrderPath } from '../../routes/Paths';
+import { cancelOrderPath, rejectOrderPath } from '../../routes/Paths';
 
 interface TableButtonProps {
   status?: string;
@@ -35,7 +35,7 @@ export default function TableButton({
   //   else if (status === Status.Waiting) return waitingOrderPath();
   //   else return "#";
   // };
-  let statu = status || "";
+  let statu = status || '';
   return (
     <Button
       className="fw-bold w-75 my-2"
