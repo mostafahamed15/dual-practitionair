@@ -17,7 +17,7 @@ export default function DayTimePicker({
   const [starthours, setStartHours] = useState(0);
   const [endhours, setEndHours] = useState(0);
   const [sum, setSum] = useState({ day: day, sum: 0 });
-
+  const [checked, setChecked] = useState<boolean>(false);
   const handelefromChange = (e: any) => {
     let time = e.target.value.split(' ');
     const [hoursPart, minutesPart] = time[0].split(':');
@@ -48,14 +48,16 @@ export default function DayTimePicker({
           <input
             className={`ms-2 ${day}`}
             type="checkbox"
-            onChange={(e) => handleClick(e.target.checked)}
+            onChange={(e) => {handleClick(e.target.checked)
+            setChecked(!checked)
+            }}
           />
           {day}
         </label>
         <div className="d-flex flex-column justify-content-center align-items-center bg-gray-200 border border-1 border-gray-700 rounded mt-1 mx-3 px-2 py-3 h-50">
           <div className="d-flex text-secondary align-items-center mt-3">
             <p>{translate.daytimepicker.from}</p>
-            <select className={`${Styles.select}`} onChange={handelefromChange}>
+            <select className={`${Styles.select}`} onChange={handelefromChange} disabled={!checked}>
               <option>{translate.daytimepicker.choose}</option>
               {times.map((time: string, index: number) => (
                 <option
@@ -71,7 +73,7 @@ export default function DayTimePicker({
           </div>
           <div className="d-flex text-secondary mb-2">
             <p>{translate.daytimepicker.to}</p>
-            <select className={`${Styles.select}`} onChange={handeletoChange}>
+            <select className={`${Styles.select}`} onChange={handeletoChange} disabled={!checked}>
               <option>{translate.daytimepicker.choose}</option>
               {times.map((time: string, index: number) => (
                 <option

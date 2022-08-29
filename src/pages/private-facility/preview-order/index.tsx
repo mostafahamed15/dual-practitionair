@@ -32,6 +32,7 @@ export default function PreviewOrder() {
   const [previewModal, setPreviewModal] = useState<boolean>(false);
   const navigate = useNavigate();
   const [checked, setChecked] = useState<boolean>(false);
+  const [daychecked, setDayChecked] = useState<boolean>(false);
   const [sumHours, setSumHours] = useState<dayHours>();
   const [confirmMessage, setConfirmMessage] = useState('');
 
@@ -108,8 +109,9 @@ export default function PreviewOrder() {
   };
 
   const handleClick = (day: any) => {
-    console.log(day);
-  };
+     console.log(day);
+     setDayChecked(day)
+   };
 
   return (
     <div className="d-flex flex-column ">
@@ -130,7 +132,7 @@ export default function PreviewOrder() {
           />
         ))}
       </div>
-      <WorkHours hours={sumHours} />
+      <WorkHours hours={sumHours}/>
       <Container>
         <h4 className="text-secondary  text-center mb-5">
           {translate.workHours.endorsement}
@@ -156,7 +158,7 @@ export default function PreviewOrder() {
       <div className="d-flex justify-content-center w-50 mb-4 m-auto">
         <Button
           variant="primary"
-          disabled={!checked}
+          disabled={!checked ||!daychecked}
           className="text-white rounded-pill fw-bold py-2 w-25 ms-3"
           onClick={() => {
             sendPractitionairInfo(practitionair);

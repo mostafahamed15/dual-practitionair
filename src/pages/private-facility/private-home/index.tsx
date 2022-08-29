@@ -62,7 +62,7 @@ export default function PrivateHome() {
           setSearchError(false);
         })
         .catch((e) => {
-          navigate(practitionerDataPath());
+          // navigate(practitionerDataPath());
           setSearchError(true);
           setSearchErrorMessage(e?.response?.data?.message || 'Server Error');
         });
@@ -100,7 +100,7 @@ export default function PrivateHome() {
   }, []);
   return (
     <div className="vh-100 pt-4">
-      <strong className="text-secondary m-4 h4">
+      <strong className="text-secondary m-3 px-5 h4">
         {translate.privateFacility.home.title}
       </strong>
       <div className="h-25 pt-4">
@@ -111,7 +111,7 @@ export default function PrivateHome() {
           >
             <div>
               <label className="h-25 d-flex flex-column text-primary font-weight-bold small">
-                <strong>{translate.privateFacility.home.idNumber}</strong>
+                <strong className='pe-3'>{translate.privateFacility.home.idNumber}</strong>
                 <input
                   id="nationalId"
                   className={`py-2 px-3 m-1 rounded-pill border ${
@@ -137,6 +137,8 @@ export default function PrivateHome() {
               )}
             </div>
             <div>
+            <label className="h-25 d-flex flex-column text-primary font-weight-bold small">
+                <strong className='pe-3'>{translate.privateFacility.home.birthDate}</strong>
               <input
                 id="birthDate"
                 className={`py-2 px-3 m-1 rounded-pill border  ${Styles.input} ${Styles.datepicker}`}
@@ -147,10 +149,11 @@ export default function PrivateHome() {
                 onFocus={(e) => (e.target.type = 'date')}
                 placeholder={translate.privateFacility.home.birthDate}
               ></input>
+              </label>
             </div>
             <Button
               disabled={!(formik.isValid && formik.dirty)}
-              className="text-white font-weight-bold rounded-pill px-5 my-1 mx-5"
+              className="text-white font-weight-bold rounded-pill py-2 px-5 my-1 mx-5"
               type="submit"
             >
               <strong>{translate.privateFacility.home.check}</strong>

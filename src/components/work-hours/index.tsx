@@ -49,7 +49,7 @@ export default function WorkHours({ hours }: WorkHoursProps) {
             <p className="text-secondary pe-4">
               <AiFillInfoCircle size={20} className="ms-1" />
               {totalHours >= 16
-                ? translate.workHours.limit
+                ? <p className="text-danger d-inline">{translate.workHours.limit}</p>
                 : translate.workHours.maxHoures}
             </p>
           </Col>
@@ -57,7 +57,7 @@ export default function WorkHours({ hours }: WorkHoursProps) {
             <p className="text-secondary fw-bold pe-4">
               {translate.workHours.acceptPeriod}
             </p>
-            <select className={`${Styles.select} w-100 border text-gray-400`}>
+            <select className={`${Styles.select} w-100 border text-gray-400`} >
               {Object.values(translate.workHours.periodOptions).map(
                 (option, index) => {
                   return <option key={index}>{option}</option>;

@@ -64,7 +64,7 @@
       "totalHours": "مجموع ساعات العمل خلال الاسبوع ",
       "sumHours": "مجموع الساعات {{number}}",
       "maxHoures": "الحد الأعلى 16 ساعة /الاسبوع",
-      "limit": "وصلت للحد",
+      "limit": " وصلت للحد الأعلى" ,
       "acceptPeriod": "مدة الموافقة",
       "periodOptions": {
         "placeholder": "اختر مدة الموافقة",
