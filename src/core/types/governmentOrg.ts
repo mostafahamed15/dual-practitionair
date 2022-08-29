@@ -9,7 +9,7 @@ export interface GovernmentOrgData {
   requestingOrgName: string;
 }
 export interface  ReviewRequest {
-    requestServiceCode:string,
+   requestServiceCode:string,
    approval: boolean,
    comment:string
  }
