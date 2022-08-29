@@ -4,10 +4,10 @@ import { Store } from '../store/store';
 import instance from './baseInstance';
 
 export const getPracticeInfo = () => {
-  return instance.get<PracticeInfo>('practitioner/info', {
-    params: {
-      NationalID: Store.getState().id,
-    },
+  return instance.get<PracticeInfo>(`practitioner/info?NationalID=${Store.getState().id}`, {
+    // params: {
+    //   NationalID: Store.getState().id,
+    // },
   });
 };
 export const getPractitionerRequests = () => {

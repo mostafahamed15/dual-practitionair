@@ -1,10 +1,7 @@
 import { useState } from 'react';
 import OrderInfo from '../../../components/order-info';
 import translate from '../../../core/locales/ar/translation.json';
-import { Button, Container } from 'react-bootstrap';
-import ModalPopup from '../../../components/modal';
 import { useNavigate } from 'react-router-dom';
-import { privateHomePath } from '../../../routes/Paths';
 import DayTimePicker from '../../../components/day-time-picker';
 import WorkHours from '../../../components/work-hours';
 import { addRequest } from '../../../services/practitioner';
@@ -32,7 +29,6 @@ export default function PreviewOrder() {
   const [previewModal, setPreviewModal] = useState<boolean>(false);
   const navigate = useNavigate();
   const [checked, setChecked] = useState<boolean>(false);
-  const [dayChecked, setDayChecked] = useState<boolean>(false);
   const [sumHours, setSumHours] = useState<dayHours>();
   const [confirmMessage, setConfirmMessage] = useState('');
   const checkedArray = [];
@@ -110,7 +106,7 @@ export default function PreviewOrder() {
   };
 
   const handleClick = (day: any) => {
-    checkedArray.push(day);
+    console.log(day);
   };
 
   return (
@@ -132,55 +128,7 @@ export default function PreviewOrder() {
           />
         ))}
       </div>
-      <WorkHours hours={sumHours} />
-      <Container>
-        <h4 className="text-secondary  text-center mb-5">
-          {translate.workHours.endorsement}
-        </h4>
-        <div className="d-flex align-items-start">
-          <input
-            type="checkbox"
-            className="ms-4"
-            onChange={() => setChecked(!checked)}
-          />
-          <ul className="border border-gray-200 py-5 px-4 rounded">
-            {translate.workHours.endorsementBody.map(
-              (item: string, index: number) => (
-                <li className="text-secondary pe-3" key={index}>
-                  {item}
-                </li>
-              )
-            )}
-          </ul>
-        </div>
-      </Container>
-      <hr className="text-gray-700 my-5 w-100" />
-      <div className="d-flex justify-content-center w-50 mb-4 m-auto">
-        <Button
-          variant="primary"
-          disabled={!checked}
-          className="text-white rounded-pill fw-bold py-2 w-25 ms-3"
-          onClick={() => {
-            sendPractitionairInfo(practitionair);
-          }}
-        >
-          {translate.governmenFacility.previewOrder.sendOrder}
-        </Button>
-        <Button
-          variant="secondary"
-          className="text-white rounded-pill fw-bold py-2 w-25"
-          onClick={() => navigate(privateHomePath())}
-        >
-          {translate.governmenFacility.previewOrder.cancel}
-        </Button>
-      </div>
-      <p className="text-secondary p-5 text-center">{translate.copyRight}</p>
-
-      <ModalPopup
-        show={previewModal}
-        handleClose={() => setPreviewModal(false)}
-        confirmMessage={confirmMessage}
-      />
+      <WorkHours hours={sumHours}/>
     </div>
   );
 }

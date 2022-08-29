@@ -28,9 +28,6 @@ export default function MultiColTable({ titles, rows }: MultiColTableProps) {
     <div className="bg-white">
       <div className="d-flex flex-row justify-content-between">
         <div className="d-flex flex-row justify-content-around align-items-center w-25">
-          <p className="text-gray-700 h6 small mt-1">
-            {translate.table.search}
-          </p>
           <div className="border border-gray-400 rounded p-1 text-gray-400 my-2">
             <input
               className="border-0"
