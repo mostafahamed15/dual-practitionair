@@ -16,8 +16,8 @@ export default function DayTimePicker({
 }: DayTimePickerProps) {
   const [starthours, setStartHours] = useState(0);
   const [endhours, setEndHours] = useState(0);
-  const [sum, setSum] = useState({ day: day, sum: 0 });
   const [checked, setChecked] = useState<boolean>(false);
+  const [sum, setSum] = useState({ day: day, sum: 0 ,checked:false });
   const handelefromChange = (e: any) => {
     let time = e.target.value.split(' ');
     const [hoursPart, minutesPart] = time[0].split(':');
@@ -33,12 +33,12 @@ export default function DayTimePicker({
   };
 
   useEffect(() => {
-    setSum({ day: day, sum: 0 });
+    setSum({ day: day, sum: 0 ,checked:false});
     if (starthours != 0 && endhours != 0) {
       let start = starthours < 8 ? starthours + 12 : starthours;
       let end = endhours < 8 ? endhours + 12 : endhours;
-      setSum({ day: day, sum: end - start });
-    }
+      setSum({ day: day, sum: (end>start?end - start: start-end ) ,checked:true });
+     }
   }, [starthours, endhours]);
   sumHours(sum);
   return (
@@ -50,6 +50,7 @@ export default function DayTimePicker({
             type="checkbox"
             onChange={(e) => {handleClick(e.target.checked)
             setChecked(!checked)
+            sumHours({...sum,checked:!checked})
             }}
           />
           {day}

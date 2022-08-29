@@ -28,5 +28,6 @@ export type PractitionerInfo = {
 };
 export type dayHours = {
   day: string, 
-  sum: number
+  sum: number,
+  checked:boolean
 };
