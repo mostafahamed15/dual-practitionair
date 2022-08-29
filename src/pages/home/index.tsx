@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { Login } from '../../services/loginApi';
@@ -5,6 +6,7 @@ import { Login } from '../../services/loginApi';
 export default function Home() {
   const { id } = useParams();
   const [role, setRole] = useState<any>();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<any>(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -15,6 +17,7 @@ export default function Home() {
       <Navigate to="/government/home" replace={true} />
     );
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   let data = {
     code: id,
   };
@@ -33,7 +36,7 @@ export default function Home() {
         setLoading(false);
         setErrorMessage(e.response.data.message || 'Server Error');
       });
-  }, []);
+  }, [data]);
   return (
     <>
       {loading ? (

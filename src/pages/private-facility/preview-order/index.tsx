@@ -32,8 +32,10 @@ export default function PreviewOrder() {
   const [previewModal, setPreviewModal] = useState<boolean>(false);
   const navigate = useNavigate();
   const [checked, setChecked] = useState<boolean>(false);
+  const [dayChecked, setDayChecked] = useState<boolean>(false);
   const [sumHours, setSumHours] = useState<dayHours>();
   const [confirmMessage, setConfirmMessage] = useState('');
+  const checkedArray = [];
 
   const pullSumHours = (sum: dayHours) => {
     setSumHours(sum);
@@ -108,7 +110,7 @@ export default function PreviewOrder() {
   };
 
   const handleClick = (day: any) => {
-    console.log(day);
+    checkedArray.push(day);
   };
 
   return (

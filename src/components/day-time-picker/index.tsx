@@ -17,6 +17,7 @@ export default function DayTimePicker({
   const [starthours, setStartHours] = useState(0);
   const [endhours, setEndHours] = useState(0);
   const [sum, setSum] = useState({ day: day, sum: 0 });
+  const checkedArray = [];
 
   const handelefromChange = (e: any) => {
     let time = e.target.value.split(' ');
@@ -48,14 +49,22 @@ export default function DayTimePicker({
           <input
             className={`ms-2 ${day}`}
             type="checkbox"
-            onChange={(e) => handleClick(e.target.checked)}
+            value={day}
+            onChange={(e) => {
+              checkedArray.push(e.target.value + (e.target.checked ? 1 : 0));
+              handleClick(e.target.value + (e.target.checked ? 1 : 0));
+            }}
           />
           {day}
         </label>
         <div className="d-flex flex-column justify-content-center align-items-center bg-gray-200 border border-1 border-gray-700 rounded mt-1 mx-3 px-2 py-3 h-50">
           <div className="d-flex text-secondary align-items-center mt-3">
             <p>{translate.daytimepicker.from}</p>
-            <select className={`${Styles.select}`} onChange={handelefromChange}>
+            <select
+              value={day}
+              className={`${Styles.select}`}
+              onChange={handelefromChange}
+            >
               <option>{translate.daytimepicker.choose}</option>
               {times.map((time: string, index: number) => (
                 <option
@@ -71,7 +80,11 @@ export default function DayTimePicker({
           </div>
           <div className="d-flex text-secondary mb-2">
             <p>{translate.daytimepicker.to}</p>
-            <select className={`${Styles.select}`} onChange={handeletoChange}>
+            <select
+              value={day}
+              className={`${Styles.select}`}
+              onChange={handeletoChange}
+            >
               <option>{translate.daytimepicker.choose}</option>
               {times.map((time: string, index: number) => (
                 <option
