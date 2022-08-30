@@ -34,7 +34,6 @@ export default function AcceptOrder() {
         <Button
           variant="primary"
           className="text-white rounded-pill fw-bold py-2 w-25 ms-3"
-          // onClick={() => }
         >
           {translate.privateFacility.acceptOrder.certificateReview}
         </Button>

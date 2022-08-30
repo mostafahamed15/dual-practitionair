@@ -13,62 +13,64 @@ export default function OrderInfo({
   organizationInfo,
 }: OrderInfoProp) {
   return (
-    <Container className="justify-content-center px-5">
-      <Row
-        className={`d-flex bg-secondary text-white fw-bold fs-5 p-2 ${Styles.titleContainer}`}
-      >
-        <Col
-          className={`border-start border-gray-500 d-flex justify-content-center ${Styles.title}`}
-        >
-          {translate.orderInfo.practicionar}
+    <Container className="justify-content-center  bg-gray-200 pb-5">
+<Row>
+        <Col className="p-0 m-0 " md={6} sm={12}>
+          <Col className={` d-flex bg-secondary text-white fw-bold fs-5 py-4  border-start border-gray-500 d-flex justify-content-center ${Styles.title}  ${Styles.titleContainerRight}`}>
+            {translate.orderInfo.practicionar}
+          </Col>
+          <Col className=" bg-gray-200  ">
+            {Object.values(personInfo).map(
+              (data: string | number, index: number) => {
+                return (
+                  <Row key={index} className="pt-4 px-5">
+                    <Row
+                      className={`${
+                        index !== Object.values(personInfo).length - 1 &&
+                        "border-bottom border-gray-500 pt-3"
+                      }`}
+                    >
+                      <Col className="text-primary fw-bold pt-2 pb-2">
+                        {Object.values(translate.orderInfo.person)[index]}
+                      </Col>
+
+                      <Col className="text-gray-800 fw-bold pt-2 pb-2">
+                        {data}
+                      </Col>
+                    </Row>
+                  </Row>
+                );
+              }
+            )}
+          </Col>
         </Col>
-        <Col className={`d-flex justify-content-center ${Styles.title}`}>
-          {translate.orderInfo.practitionarOrg}
-        </Col>
-      </Row>
-      <Row className="d-flex bg-gray-200 py-5">
-        <Col className="border-start border-gray-500">
-          {Object.values(personInfo).map(
-            (data: string | number, index: number) => {
-              return (
-                <Row key={index} className="p-3 px-5">
+
+        <Col className="p-0 m-0 " md={6} sm={12}>
+          
+            <Col className={` d-flex bg-secondary text-white fw-bold fs-5 py-4 ${Styles.titleContainerLeft} border-start border-gray-500 d-flex justify-content-center ${Styles.title}`}>
+              {translate.orderInfo.practicionar}
+            </Col>
+            <Col className=" bg-gray-200 border-end border-sm-0 border-gray-500 ">
+            {Object.values(organizationInfo).map(
+              (data: string | number, index: number) => (
+                <Row key={index} className="pt-4 px-5">
                   <Row
                     className={`${
-                      index !== Object.values(personInfo).length - 1 &&
-                      "border-bottom border-gray-500"
+                      index !== Object.values(organizationInfo).length - 1 &&
+                      "border-bottom border-gray-500 pt-3"
                     }`}
                   >
                     <Col className="text-primary fw-bold pt-2 pb-2">
-                      {Object.values(translate.orderInfo.person)[index]}
+                      {Object.values(translate.orderInfo.organization)[index]}
                     </Col>
-
                     <Col className="text-gray-800 fw-bold pt-2 pb-2">
                       {data}
                     </Col>
                   </Row>
                 </Row>
-              );
-            }
-          )}
-        </Col>
-        <Col>
-          {Object.values(organizationInfo).map(
-            (data: string | number, index: number) => (
-              <Row key={index} className="p-3 px-5">
-                <Row
-                  className={`${
-                    index !== Object.values(organizationInfo).length - 1 &&
-                    "border-bottom border-gray-500"
-                  }`}
-                >
-                  <Col className="text-primary fw-bold pt-2 pb-2">
-                    {Object.values(translate.orderInfo.organization)[index]}
-                  </Col>
-                  <Col className="text-gray-800 fw-bold pt-2 pb-2">{data}</Col>
-                </Row>
-              </Row>
-            )
-          )}
+              )
+            )}
+          </Col>
         </Col>
       </Row>
     </Container>

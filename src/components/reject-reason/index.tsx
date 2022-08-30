@@ -2,14 +2,15 @@ import { Container, Row, Col } from "react-bootstrap";
 import { rejectOrder } from "../../core/data/Data";
 import translate from "../../core/locales/ar/translation.json";
 import Styles from "./styles.module.scss";
-function RejectReason() {
+
+export default function RejectReason() {
   return (
     <Container className="p-5 ">
       <Row
         className={` bg-secondary text-white fw-bold fs-5 p-4 ${Styles.titleContainer}`}
       >
         <p className=" text-center mb-0">
-         {translate.privateFacility.rejectOrder.rejectReason}
+          {translate.privateFacility.rejectOrder.rejectReason}
         </p>
       </Row>
       <Row className="d-flex bg-gray-200 ">
@@ -33,4 +34,3 @@ function RejectReason() {
     </Container>
   );
 }
-export default RejectReason;
