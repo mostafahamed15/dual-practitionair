@@ -1,6 +1,5 @@
 import {
   AddRequest,
-  PrivateOrgData,
   AddRequestResponse,
   PrivateOrgLicense,
 } from '../core/types/privateOrg';

@@ -61,19 +61,20 @@ export default function MultiColTable({ titles, rows }: MultiColTableProps) {
             </tr>
           </thead>
           <tbody>
-            {searchResult.map((row: Object, index: number) => (
+            {searchResult.map((row: any, index: number) => (
               <tr key={index} className="text-gray-800 text-center">
                 {Object.entries(row).map((data, index) =>
                   data[0] === 'status' ? (
                     <td key={index}>
                       <TableButton
-                        status={data[1]}
+                        serviceCode={row?.orderNumber}
+                        status={row?.status}
                         variant={variant}
                         navigationPath={navigationPath}
                       />
                     </td>
                   ) : (
-                    <td key={index}>{data[1]}</td>
+                    <td key={index}>{row?.status}</td>
                   )
                 )}
                 {Object.entries(row).map(

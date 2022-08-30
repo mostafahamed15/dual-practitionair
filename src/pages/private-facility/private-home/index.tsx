@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Table from '../../../components/table';
 import translate from '../../../core/locales/ar/translation.json';
-import { dummyTitles } from '../../../core/data/Data';
+import { dummyTitles, dummyRows } from '../../../core/data/Data';
 import { useFormik } from 'formik';
 import { Button } from 'react-bootstrap';
 import Styles from './styles.module.scss';
@@ -71,32 +71,32 @@ export default function PrivateHome() {
   });
   useEffect(() => {
     dispatch(privateFacility());
-    if (sessionStorage.getItem('re') === 'ddd') {
-      getPrivateOrgData()
-        .then((response) => {
-          let data = response.data.data.map((item: any) => {
-            type ObjectKey = keyof typeof lookupStatus;
-            const myVar: ObjectKey = item.resquestStatus;
-            return {
-              orderNumber: item.reqServiceCode,
-              idNumber: item.nationalId,
-              fullName: item.practionerMainOrgName,
-              applicant: item.practionerName,
-              date: item.dateOfRequset,
-              status: lookupStatus[myVar],
-            };
-          });
-          setPrivateList(data);
-          setLoading(false);
-        })
-        .catch((e) => {
-          setLoading(false);
-          setError(true);
-          setErrorMessage(e?.response?.data?.message || 'Server Error');
+    //if (sessionStorage.getItem('re') === 'ddd') {
+    getPrivateOrgData()
+      .then((response) => {
+        let data = response.data.data.map((item: any) => {
+          type ObjectKey = keyof typeof lookupStatus;
+          const myVar: ObjectKey = item.resquestStatus;
+          return {
+            orderNumber: item.reqServiceCode,
+            idNumber: item.nationalId,
+            fullName: item.practionerName,
+            applicant: item.practionerMainOrgName,
+            date: item.dateOfRequset,
+            status: lookupStatus[myVar],
+          };
         });
-    } else {
-      window.location.replace('https://seha.devclan.io');
-    }
+        setPrivateList(data);
+        setLoading(false);
+      })
+      .catch((e) => {
+        setLoading(false);
+        setError(true);
+        setErrorMessage(e?.response?.data?.message || 'Server Error');
+      });
+    // } else {
+    //   window.location.replace('https://seha.devclan.io');
+    // }
   }, []);
   return (
     <div className="vh-100 pt-4">
@@ -111,7 +111,9 @@ export default function PrivateHome() {
           >
             <div>
               <label className="h-25 d-flex flex-column text-primary font-weight-bold small">
-                <strong className='pe-3'>{translate.privateFacility.home.idNumber}</strong>
+                <strong className="pe-3">
+                  {translate.privateFacility.home.idNumber}
+                </strong>
                 <input
                   id="nationalId"
                   className={`py-2 px-3 m-1 rounded-pill border ${
@@ -137,18 +139,20 @@ export default function PrivateHome() {
               )}
             </div>
             <div>
-            <label className="h-25 d-flex flex-column text-primary font-weight-bold small">
-                <strong className='pe-3'>{translate.privateFacility.home.birthDate}</strong>
-              <input
-                id="birthDate"
-                className={`py-2 px-3 m-1 rounded-pill border  ${Styles.input} ${Styles.datepicker}`}
-                max="2999-12-31"
-                type="text"
-                value={formik.values.birthDate}
-                onChange={formik.handleChange}
-                onFocus={(e) => (e.target.type = 'date')}
-                placeholder={translate.privateFacility.home.birthDate}
-              ></input>
+              <label className="h-25 d-flex flex-column text-primary font-weight-bold small">
+                <strong className="pe-3">
+                  {translate.privateFacility.home.birthDate}
+                </strong>
+                <input
+                  id="birthDate"
+                  className={`py-2 px-3 m-1 rounded-pill border  ${Styles.input} ${Styles.datepicker}`}
+                  max="2999-12-31"
+                  type="text"
+                  value={formik.values.birthDate}
+                  onChange={formik.handleChange}
+                  onFocus={(e) => (e.target.type = 'date')}
+                  placeholder={translate.privateFacility.home.birthDate}
+                ></input>
               </label>
             </div>
             <Button
@@ -172,10 +176,10 @@ export default function PrivateHome() {
           <hr className="text-gray-400" />
           {loading ? (
             <h3>Loading..</h3>
-          ) : error ? (
+          ) : !error ? (
             <h6 style={{ color: 'red' }}>{errorMessage}</h6>
           ) : (
-            <Table titles={dummyTitles} rows={privateList} />
+            <Table titles={dummyTitles} rows={dummyRows} />
           )}
         </div>
       </div>

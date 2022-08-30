@@ -4,11 +4,23 @@ import { Store } from '../store/store';
 import instance from './baseInstance';
 
 export const getPracticeInfo = () => {
-  return instance.get<PracticeInfo>(`practitioner/info?NationalID=${Store.getState().id}`, {
-    // params: {
-    //   NationalID: Store.getState().id,
-    // },
-  });
+  return instance.get<PracticeInfo>(
+    `practitioner/info?NationalID=${Store.getState().id}`,
+    {
+      // params: {
+      //   NationalID: Store.getState().id,
+      // },
+    }
+  );
+};
+
+export const getDetailedItem = () => {
+  return instance.get<any>(
+    `api/practitioner/details-of-request?ReqServiceCode=${
+      Store.getState().serviceCode
+    }`,
+    {}
+  );
 };
 export const getPractitionerRequests = () => {
   return instance.get<PractitionerRequest>('practitioner/requests-list', {

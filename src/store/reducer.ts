@@ -1,5 +1,7 @@
 let initialState: any = {
   id: '',
+  serviceCode: '',
+  status: '',
   orgType: '',
   info: {
     practitionerInfo: {
@@ -66,6 +68,16 @@ export default function UserReducer(state = initialState, action: any) {
       return {
         ...state,
         id: action.payload,
+      };
+    case 'GET_SERVICE_CODE':
+      return {
+        ...state,
+        serviceCode: action.payload,
+      };
+    case 'GET_STATUS':
+      return {
+        ...state,
+        status: action.payload,
       };
     case 'GET_PRACTITIONAIR':
       return {

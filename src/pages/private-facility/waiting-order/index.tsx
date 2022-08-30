@@ -1,16 +1,46 @@
-import { useState } from "react";
-import OrderInfo from "../../../components/order-info";
-import { organizationInfo, privatePersonInfo } from "../../../core/data/Data";
-import translate from "../../../core/locales/ar/translation.json";
-import { AiFillCheckCircle } from "react-icons/ai";
-import { Status } from "../../../core/enums/Enum";
-import { Button } from "react-bootstrap";
-import WorkSchedule from "../../../components/work-schedule";
-import PeriodOfWork from "../../../components/period-of-work";
-import WaitingOrderModal from "../../../components/waiting-order-modal";
+import { useState, useEffect } from 'react';
+import OrderInfo from '../../../components/order-info';
+import translate from '../../../core/locales/ar/translation.json';
+import { AiFillCheckCircle } from 'react-icons/ai';
+import { Status } from '../../../core/enums/Enum';
+import { Button } from 'react-bootstrap';
+import WorkSchedule from '../../../components/work-schedule';
+import PeriodOfWork from '../../../components/period-of-work';
+import WaitingOrderModal from '../../../components/waiting-order-modal';
+import { getDetailedItem } from '../../../services/practitioner';
 
 export default function WaitingOrder() {
   const [acceptModal, setAcceptModal] = useState<boolean>(false);
+  const [orgInfo, setOrgInfo] = useState<any>();
+  const [personInfo, setPersonOrgInfo] = useState<any>();
+  const [detailErrorMessage, setDetailErrorMessage] = useState('');
+
+  useEffect(() => {
+    getDetailedItem()
+      .then((response) => {
+        const data = response.data.data;
+        const org = {
+          orgName: data.govOrgName,
+          type: data.govOrgCategoryName,
+          city: data.govCityName,
+          orgId: data.requestid,
+          expDate: data.scfhsRegistrationExpiryDate,
+          governorate: data.directorate,
+        };
+        const privatePerson = {
+          name: data.practitionerFullName,
+          specialization: data.specialtyName,
+          specializationId: data.prvOrgLicenseNumber,
+          specializationEndDate: data.privateEstablishmentLicenseExpiryDate,
+          orgName: data.prvOrgName,
+        };
+        setOrgInfo(org);
+        setPersonOrgInfo(privatePerson);
+      })
+      .catch((e) => {
+        setDetailErrorMessage(e?.response?.data?.message || 'Server Error');
+      });
+  });
   return (
     <div className="d-flex flex-column align-items-center">
       <div className="d-flex justify-content-center pt-5">
@@ -22,10 +52,7 @@ export default function WaitingOrder() {
           <p className="mb-1 me-1 fw-bold">{Status.ACCEPTED}</p>
         </div>
       </div>
-      <OrderInfo
-        organizationInfo={organizationInfo}
-        personInfo={privatePersonInfo}
-      />
+      <OrderInfo organizationInfo={orgInfo} personInfo={personInfo} />
       <WorkSchedule />
       <PeriodOfWork />
       <hr className="text-gray-700 my-5 w-100" />
