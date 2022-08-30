@@ -3,7 +3,6 @@ import translate from '../../core/locales/ar/translation.json';
 import {  Container,Button } from 'react-bootstrap';
 import ModalPopup from '../../components/modal';
 import { useNavigate } from 'react-router-dom';
-import { privateHomePath } from '../../routes/Paths';
 import { Store } from '../../store/store';
 import { addRequest } from '../../services/practitioner';
 interface EndorsementProps {
@@ -131,7 +130,8 @@ function Endorsement({
         <Button
           variant="secondary"
           className="text-white rounded-pill fw-bold py-2 w-25"
-          onClick={() => navigate(privateHomePath())}
+          onClick={() => setPreviewModal(true)
+          }
         >
           {translate.governmenFacility.previewOrder.cancel}
         </Button>
@@ -140,9 +140,10 @@ function Endorsement({
     <ModalPopup
         show={previewModal}
         handleClose={() => setPreviewModal(false)}
-        confirmMessage={confirmMessage}
+        confirmMessage={translate.modal.cancelConfirm}
+        question={translate.modal.cancel}
       />
- </div>
+  </div>
   )
 }
 

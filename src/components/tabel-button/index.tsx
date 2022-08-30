@@ -42,7 +42,7 @@ export default function TableButton({
   let statu = status || '';
   return (
     <Button
-      className="fw-bold w-75 my-2"
+      className="fw-bold px-3  w-sm-100 my-2"
       size="sm"
       // variant={variant()}
       // onClick={() => navigate(navigationPath())}
