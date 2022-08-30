@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Table from '../../../components/table';
 import translate from '../../../core/locales/ar/translation.json';
-import { dummyTitles } from '../../../core/data/Data';
+import { dummyTitles  } from '../../../core/data/Data';
 import { useFormik } from 'formik';
 import { Button } from 'react-bootstrap';
 import Styles from './styles.module.scss';
@@ -93,20 +93,21 @@ export default function PrivateHome() {
           setLoading(false);
           setError(true);
           setErrorMessage(e?.response?.data?.message || 'Server Error');
-        });
+     });
     } else {
       window.location.replace('https://seha.devclan.io');
     }
   }, []);
   return (
-    <div className="vh-100 pt-4">
-      <strong className="text-secondary m-3 px-5 h4">
+    <div className="vh-100 pt-4 ">
+      
+      <div className=" pb-5 pt-4 px-5 ">
+      <strong className="text-secondary  h4  text-md-right text-center">
         {translate.privateFacility.home.title}
       </strong>
-      <div className="h-25 pt-4">
-        <div className="d-flex flex-column align-items-center">
+        <div className="d-flex flex-column align-items-center pt-4">
           <form
-            className="d-flex w-75 justify-content-center align-items-end"
+            className=" pb-5 d-flex flex-column flex-md-row w-75 justify-content-center align-items-center align-items-md--end "
             onSubmit={formik.handleSubmit}
           >
             <div>
@@ -125,8 +126,7 @@ export default function PrivateHome() {
                       ? setIdError(true)
                       : setIdError(false);
                   }}
-                  placeholder={translate.privateFacility.home.idNumber}
-                ></input>
+                 ></input>
               </label>
               {idError && (
                 <p
@@ -147,13 +147,12 @@ export default function PrivateHome() {
                 value={formik.values.birthDate}
                 onChange={formik.handleChange}
                 onFocus={(e) => (e.target.type = 'date')}
-                placeholder={translate.privateFacility.home.birthDate}
-              ></input>
+               ></input>
               </label>
             </div>
             <Button
               disabled={!(formik.isValid && formik.dirty)}
-              className="text-white font-weight-bold rounded-pill py-2 px-5 my-1 mx-5"
+              className="text-white font-weight-bold rounded-pill py-2 px-5 mt-3 mx-2"
               type="submit"
             >
               <strong>{translate.privateFacility.home.check}</strong>
@@ -164,7 +163,7 @@ export default function PrivateHome() {
           {searchError && searchErrorMessage}
         </h6>
       </div>
-      <div className="bg-gray-200 h-75 py-4 px-5">
+      <div className="bg-gray-200 py-4 px-5 ">
         <div className="bg-white pt-1">
           <h5 className="text-secondary font-weight-bold m-3 mb-4">
             {translate.privateFacility.home.ordersStatus}
@@ -172,7 +171,7 @@ export default function PrivateHome() {
           <hr className="text-gray-400" />
           {loading ? (
             <h3>Loading..</h3>
-          ) : error ? (
+          ) : !error ? (
             <h6 style={{ color: 'red' }}>{errorMessage}</h6>
           ) : (
             <Table titles={dummyTitles} rows={privateList} />

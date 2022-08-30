@@ -23,11 +23,10 @@ export default function MultiColTable({ titles, rows }: MultiColTableProps) {
       );
     setSearchResult(newRows);
   };
-
-  return (
-    <div className="bg-white">
-      <div className="d-flex flex-row justify-content-between">
-        <div className="d-flex flex-row justify-content-around align-items-center w-25">
+return (
+    <div className="bg-white ">
+      <div className=" pb-2  d-flex flex-md-row justify-content-between align-items-center  flex-column pb-md-3 w-100">
+        <div className=" d-flex flex-row pe-5 align-items-center ">
           <div className="border border-gray-400 rounded p-1 text-gray-400 my-2">
             <input
               className="border-0"
@@ -38,11 +37,11 @@ export default function MultiColTable({ titles, rows }: MultiColTableProps) {
             <AiOutlineSearch size={20} />
           </div>
         </div>
-        <div className="d-flex flex-row justify-content-around align-items-center ps-md-3">
-          <p className="text-gray-700 h6 small mt-1 ps-sm-2">
+        <div className="  d-flex flex-row justify-content-center align-items-center ps-md-3 ">
+          <p className="text-gray-700 h6 small mt-1 ps-sm-2 mx-3 ">
             {translate.table.showInputs}
           </p>
-          <select className="rounded px-3 text-gray-700 bold select">
+          <select className="rounded px-3 text-gray-700 bold select  ">
             <option value="10">10</option>
             <option value="25">25</option>
             <option value="50">50</option>
@@ -51,7 +50,7 @@ export default function MultiColTable({ titles, rows }: MultiColTableProps) {
         </div>
       </div>
       {rows.length && (
-        <Table hover>
+        <Table hover responsive>
           <thead className="bg-secondary text-white text-center">
             <tr>
               {titles.map((title: string, index: number) => (
@@ -65,7 +64,7 @@ export default function MultiColTable({ titles, rows }: MultiColTableProps) {
               <tr key={index} className="text-gray-800 text-center">
                 {Object.entries(row).map((data, index) =>
                   data[0] === 'status' ? (
-                    <td key={index}>
+                    <td key={index} >
                       <TableButton
                         status={data[1]}
                         variant={variant}
@@ -73,7 +72,7 @@ export default function MultiColTable({ titles, rows }: MultiColTableProps) {
                       />
                     </td>
                   ) : (
-                    <td key={index}>{data[1]}</td>
+                    <td key={index} className="align-middle">{data[1]}</td>
                   )
                 )}
                 {Object.entries(row).map(

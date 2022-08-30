@@ -43,18 +43,16 @@ export default function DayTimePicker({
   }, [starthours, endhours]);
   sumHours(sum);
   return (
-    <div className="d-flex flex-column ">
+    <div className="d-flex flex-column pt-3">
       <div className="d-flex flex-column justify-content-center align-items-center">
         <label className={`${Styles.checkbox} text-secondary fw-bold small`}>
           <input
             className={`ms-2 ${day}`}
             type="checkbox"
-
             onChange={(e) => {handleClick(e.target.checked)
             setChecked(!checked)
             sumHours({...sum,checked:!checked})
-
-            }}
+          }}
           />
           {day}
         </label>
