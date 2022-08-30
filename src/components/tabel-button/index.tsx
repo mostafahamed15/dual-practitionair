@@ -22,6 +22,7 @@ export default function TableButton({
 }: TableButtonProps) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+ 
   // const variant = (): string => {
   //   if (status === Status.ACCEPTED) return "outline-primary";
   //   else if (status === Status.CANCELLED  ) return "outline-danger";
@@ -51,6 +52,7 @@ export default function TableButton({
         dispatch(getServiceCode(serviceCode));
         dispatch(getStatus(statu));
         navigate(navigationPath(statu));
+        
       }}
     >
       {status}

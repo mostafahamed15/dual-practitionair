@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState ,useEffect} from 'react';
 import OrderInfo from '../../../components/order-info';
 import translate from '../../../core/locales/ar/translation.json';
 import WorkSchedule from '../../../components/work-schedule';
@@ -7,7 +7,9 @@ import { Button } from 'react-bootstrap';
 import { Container } from 'react-bootstrap';
 import ModalPopup from '../../../components/modal';
 import { Store } from '../../../store/store';
+import { getDetailedItem } from '../../../services/practitioner'
 
+import { workHours } from '../../../core/types/Types';
 export default function CreateEditOrder() {
   const privatePersonInfo = {
     name: Store.getState().info?.practitionerInfo?.fullNameAr,
@@ -30,17 +32,60 @@ export default function CreateEditOrder() {
   const [acceptModal, setAcceptModal] = useState<boolean>(false);
   const [rejectModal, setRejectModal] = useState<boolean>(false);
   const conditions = translate.governmenFacility.previewOrder.conditions;
+   const [orgInfo, setOrgInfo] = useState<any>({});
+  const [personInfo, setPersonOrgInfo] = useState<any>({});
+  const [detailErrorMessage, setDetailErrorMessage] = useState('');
+  const [workHours, setworkHours] = useState<workHours>();
+  const [error,setError]=useState(false)
+  const [workSchedule,setWorkSchedule]=useState([])
+  useEffect(() => {
+    getDetailedItem()
+      .then((response) => {
+        const data = response.data.data;
+        const org = {
+          orgName: data.govOrgName,
+          type: data.govOrgCategoryName,
+          city: data.govCityName,
+          orgId: data.requestid,
+          expDate: data.scfhsRegistrationExpiryDate,
+          governorate: data.directorate,
+        };
+        const privatePerson = {
+          name: data.practitionerFullName,
+          specialization: data.specialtyName,
+          specializationId: data.prvOrgLicenseNumber,
+          specializationEndDate: data.privateEstablishmentLicenseExpiryDate,
+          orgName: data.prvOrgName,
+        };
+        const workHours:workHours={
+          sum:data.totalWeeklyHours,
+          period:data.duration
+        }
+        setError(false)
+        setOrgInfo(org);
+        setPersonOrgInfo(privatePerson);
+        setWorkSchedule(data.doctorDaySchedule)
+        setworkHours(workHours)
+      })
+      .catch((e) => {
+        setError(true)
+        setDetailErrorMessage(e?.response?.data?.message || 'Server Error');
+      });
+  });
+
   return (
-    <div className="d-flex flex-column align-items-center">
+    <>
+    {error?<p>{detailErrorMessage}</p>:
+      <div className="d-flex flex-column align-items-center">
       <h4 className="text-secondary pb-1 pt-5 fw-bold text-center">
         {translate.governmenFacility.previewOrder.title}
       </h4>
       <OrderInfo
-        organizationInfo={organizationInfo}
-        personInfo={privatePersonInfo}
+        organizationInfo={orgInfo}
+        personInfo={personInfo}
       />
-      <WorkSchedule />
-      <PeriodOfWork />
+      <WorkSchedule  workSchedule={workSchedule}/>
+      <PeriodOfWork  workhours={workHours}/>
       <Container className="  border-top  border-gray-300 pt-5">
         <h4 className="text-secondary  text-center mb-4">
           {translate.workHours.totalHours}
@@ -106,5 +151,8 @@ export default function CreateEditOrder() {
         reject={rejectModal}
       />
     </div>
+    }
+    </>
+  
   );
 }

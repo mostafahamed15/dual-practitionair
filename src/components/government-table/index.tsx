@@ -55,7 +55,7 @@ export default function GovernmentTable({
           </select>
         </div>
       </div>
-      {rows.length && (
+      {rows.length  ? (
         <Table hover>
           <thead className="bg-secondary text-white text-center">
             <tr>
@@ -93,7 +93,7 @@ export default function GovernmentTable({
             ))}
           </tbody>
         </Table>
-      )}
+      ):<h3>لاتوجد طلبات</h3>}
     </div>
   );
 }

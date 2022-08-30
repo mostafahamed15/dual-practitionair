@@ -176,8 +176,8 @@
             "day": "السبت", "time": " 08:30 am - 04:30 pm ",  "text_color": "text-secondary"
           }
         ],
-        "workHours": "  16 ساعة ",
-        "period": " 12 شهر"
+        "workHours": "  ساعة ",
+        "period": "  شهر"
       }
     },
      "rejectOrder":{

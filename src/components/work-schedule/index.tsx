@@ -1,6 +1,8 @@
 import translate from "../../core/locales/ar/translation.json";
-
-export default function WorkSchedule() {
+interface WorkScheduleProps{
+  workSchedule:Object[]
+}
+export default function WorkSchedule({workSchedule}:WorkScheduleProps) {
   const translation = translate.privateFacility.acceptOrder.workschedule;
   return (
     <div>

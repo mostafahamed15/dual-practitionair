@@ -20,6 +20,7 @@ function Endorsement({
   }: EndorsementProps) {
     const [checked, setChecked] = useState<boolean>(false);
     const [previewModal, setPreviewModal] = useState<boolean>(false);
+    const [rejectModal, setRejectModal] = useState<boolean>(false);
     const navigate = useNavigate();
     const [confirmMessage, setConfirmMessage] = useState('');
     const practitionair: any = {
@@ -119,7 +120,7 @@ function Endorsement({
       <div className="d-flex justify-content-center w-50 mb-4 m-auto">
         <Button
           variant="primary"
-          disabled={!checked ||!daychecked || !(sumHours! < 16) || !(sumHours != 0)  ||!acceptPeriod}
+          disabled={!checked ||!daychecked || !(sumHours! === 16) ||!acceptPeriod}
           className="text-white rounded-pill fw-bold py-2 w-25 ms-3"
           onClick={() => {
             sendPractitionairInfo(practitionair);
@@ -130,7 +131,7 @@ function Endorsement({
         <Button
           variant="secondary"
           className="text-white rounded-pill fw-bold py-2 w-25"
-          onClick={() => setPreviewModal(true)
+          onClick={() => setRejectModal(true)
           }
         >
           {translate.governmenFacility.previewOrder.cancel}
@@ -138,10 +139,15 @@ function Endorsement({
       </div>
       <p className="text-secondary p-5 text-center">{translate.copyRight}</p>
     <ModalPopup
-        show={previewModal}
-        handleClose={() => setPreviewModal(false)}
+        show={rejectModal}
+        handleClose={() => setRejectModal(false)}
         confirmMessage={translate.modal.cancelConfirm}
         question={translate.modal.cancel}
+      />
+       <ModalPopup
+        show={previewModal}
+        handleClose={() => setPreviewModal(false)}
+        confirmMessage={confirmMessage}
       />
   </div>
   )

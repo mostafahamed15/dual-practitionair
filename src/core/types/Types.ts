@@ -31,3 +31,13 @@ export type dayHours = {
   sum: number,
   checked:boolean
 };
+export type workHours = {
+  sum: number,
+  period:number
+};
+export type doctorDaySchedule =[
+  {
+    from: string,
+    to: string,
+    day: number,
+    totalHours:number    },]

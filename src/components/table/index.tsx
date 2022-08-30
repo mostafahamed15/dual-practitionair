@@ -49,7 +49,7 @@ return (
           </select>
         </div>
       </div>
-      {rows.length && (
+      {rows.length ?(
         <Table hover responsive>
           <thead className="bg-secondary text-white text-center">
             <tr>
@@ -94,7 +94,7 @@ return (
             ))}
           </tbody>
         </Table>
-      )}
+      ):<h3>لاتوجد طلبات</h3>}
     </div>
   );
 }
