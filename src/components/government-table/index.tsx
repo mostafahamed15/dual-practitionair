@@ -4,19 +4,23 @@ import translate from "../../core/locales/ar/translation.json";
 import { AiOutlineSearch } from "react-icons/ai";
 import { Status } from "../../core/enums/Enum";
 import TableLink from "../table-link";
-import TableButton from "../tabel-button";
-import { govBtnNavigationPath, govBtnVariant } from "../../core/helpers/Helpers";
+import GovernmentTableButton from "../government-table-button";
 interface GovernmentTableProps {
   titles: string[];
   rows: Object[];
 }
 
-export default function GovernmentTable({ titles, rows }: GovernmentTableProps) {
+export default function GovernmentTable({
+  titles,
+  rows,
+}: GovernmentTableProps) {
   const [searchResult, setSearchResult] = useState<Object[]>(rows);
   const filteredRows = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newRows = rows.filter((data) =>
-      Object.values(data).toString().includes(e.target.value)
-    );
+    const newRows =
+      rows &&
+      rows.filter((data) =>
+        Object.values(data).toString().includes(e.target.value)
+      );
     setSearchResult(newRows);
   };
 
@@ -64,7 +68,7 @@ export default function GovernmentTable({ titles, rows }: GovernmentTableProps) 
               {Object.entries(row).map((data, index) =>
                 data[0] === "status" ? (
                   <td key={index}>
-                    <TableButton status={data[1]} variant={govBtnVariant} navigationPath={govBtnNavigationPath}/>
+                    <GovernmentTableButton status={data[1]}/>
                   </td>
                 ) : (
                   <td key={index}>{data[1]}</td>

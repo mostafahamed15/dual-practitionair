@@ -1,16 +1,62 @@
+import { useState, useEffect } from 'react';
 import OrderInfo from "../../../components/order-info";
 import { organizationInfo, privatePersonInfo } from "../../../core/data/Data";
 import translate from "../../../core/locales/ar/translation.json";
 import { GiCancel } from "react-icons/gi";
-import { Status } from "../../../core/enums/Enum";
 import { Button } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import RejectReason from "../../../components/reject-reason";
+import { getDetailedItem } from '../../../services/practitioner';
+import { rejectDetail } from '../../../core/types/Types';
 export default function RejectOrder() {
   const navigate = useNavigate();
   const location = useLocation();
+  const [orgInfo, setOrgInfo] = useState<any>();
+  const [personInfo, setPersonOrgInfo] = useState<any>();
+  const [rejectDetail, setRejectDetail] = useState<rejectDetail>({
+    rejectorg:"     " ,
+    rejectDate:"",
+    rejectReason:""
+  });
+  const [detailErrorMessage, setDetailErrorMessage] = useState('');
+  const [error,setError]=useState(false)
+  useEffect(() => {
+    getDetailedItem()
+      .then((response) => {
+        const data = response.data.data;
+        const org = {
+          orgName: data.govOrgName,
+          type: data.govOrgCategoryName,
+          city: data.govCityName,
+          orgId: data.requestid,
+          expDate: data.scfhsRegistrationExpiryDate,
+          governorate: data.directorate,
+        };
+        const privatePerson = {
+          name: data.practitionerFullName,
+          specialization: data.specialtyName,
+          specializationId: data.prvOrgLicenseNumber,
+          specializationEndDate: data.privateEstablishmentLicenseExpiryDate,
+          orgName: data.prvOrgName,
+        };
+        const rejectDetail={
+          rejectorg:data.refusalSide,
+          rejectDate:data.rejectionDate,
+          rejectReason:data.rrejectionReason
+        }
+        setOrgInfo(org);
+        setPersonOrgInfo(privatePerson);
+        setRejectDetail(rejectDetail)
+        setError(false)
+      })
+      .catch((e) => {
+        setError(true)
+        setDetailErrorMessage(e?.response?.data?.message || 'Server Error');
+      });
+  });
   return (
-    <div className="d-flex flex-column align-items-center">
+   <>
+   {error?<p>{detailErrorMessage}</p>: <div className="d-flex flex-column align-items-center">
       <div className="d-flex justify-content-center pt-5">
         <h4 className="text-secondary pb-1 fw-bold">
           {translate.privateFacility.acceptOrder.title}
@@ -23,10 +69,10 @@ export default function RejectOrder() {
         </div>
       </div>
       <OrderInfo
-        organizationInfo={organizationInfo}
-        personInfo={privatePersonInfo}
+        organizationInfo={orgInfo}
+        personInfo={personInfo}
       />
-      <RejectReason />
+      <RejectReason reason={rejectDetail}/>
       <hr className="text-gray-700 my-5 w-100" />
       <div className="d-flex justify-content-center w-50 mb-4">
         <Button
@@ -40,5 +86,11 @@ export default function RejectOrder() {
       </div>
       <p className="text-secondary p-5">{translate.copyRight}</p>
     </div>
+   
+  
+  
+  }
+   
+   </>
   );
 }

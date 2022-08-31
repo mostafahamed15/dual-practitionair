@@ -6,10 +6,7 @@ import translate from "../../core/locales/ar/translation.json";
 import { Status } from "../../core/enums/Enum";
 import { HiOutlineCheckCircle } from "react-icons/hi";
 import { MdOutlineCancel } from "react-icons/md";
-import {
-  confirmRejectPath,
-  renewOrderPath,
-} from "../../routes/Paths";
+import { confirmRejectPath, renewOrderPath } from "../../routes/Paths";
 import { useSelector } from "react-redux";
 import { governmentFacility, privateFacility } from "../../store/actions";
 interface ModalPopupProps {

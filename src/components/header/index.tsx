@@ -1,12 +1,10 @@
-import { Navbar, Nav } from 'react-bootstrap';
-import Image from 'react-bootstrap/Image';
-import { AiOutlineBell } from 'react-icons/ai';
-import { FiSettings } from 'react-icons/fi';
-import { CgLogOff } from 'react-icons/cg';
-
-import logo from '../../assets/imgs/SehaLogo.png';
-
-import { Link } from 'react-router-dom';
+import { Navbar, Nav } from "react-bootstrap";
+import Image from "react-bootstrap/Image";
+import { AiOutlineBell } from "react-icons/ai";
+import { FiSettings } from "react-icons/fi";
+import { CgLogOff } from "react-icons/cg";
+import logo from "../../assets/imgs/SehaLogo.png";
+import { Link } from "react-router-dom";
 
 interface HeaderProps {
   title: string;

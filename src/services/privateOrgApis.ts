@@ -1,0 +1,28 @@
+import {
+  AddRequest,
+  AddRequestResponse,
+  PrivateOrgLicense,
+} from '../core/types/privateOrg';
+import instance from './baseInstance';
+
+export const getPrivateOrgData = () => {
+  return instance.get<any>(
+    'privateorganization/get-list-requests-private-organization'
+  );
+};
+export const getPrivateOrgLicense = () => {
+  return instance.get<PrivateOrgLicense>(
+    'privateorganization/get-license-to-hls',
+    {
+      params: {
+        ParctNId: '',
+      },
+    }
+  );
+};
+export const privateAddRequest = (data: AddRequest) => {
+  return instance.post<AddRequestResponse>(
+    'privateorganization/review-request-and-deduct',
+    data
+  );
+};

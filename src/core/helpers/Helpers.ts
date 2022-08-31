@@ -1,14 +1,24 @@
-
 import * as Yup from 'yup';
-import translate from "../locales/ar/translation.json"
-import { Status } from "../../core/enums/Enum";
-import { governmentAcceptOrderPath,createEditOrderPath, waitingOrderPath, cancelOrderPath,rejectOrderPath ,acceptOrderPath } from "../../routes/Paths";
+import translate from '../locales/ar/translation.json';
+import { Status } from '../../core/enums/Enum';
+import {
+  governmentAcceptOrderPath,
+  createEditOrderPath,
+  waitingOrderPath,
+  cancelOrderPath,
+  rejectOrderPath,
+  acceptOrderPath,
+} from '../../routes/Paths';
 
 
-export const PrivateHomeValidation = ( required: string, id?: string,) => Yup.object().shape({
-    [`${required}`] : Yup.string().required(translate.errors.required),
-    [`${id}`] : Yup.string().min(10, translate.errors.length).max(10, translate.errors.length).required(translate.errors.required),
-});
+export const PrivateHomeValidation = (id: string) =>
+  Yup.object().shape({
+    [`${id}`]: Yup.string()
+      .min(10, translate.errors.length)
+      .max(10, translate.errors.length)
+      .required(translate.errors.required),
+  });
+
 export const privateBtnVariant = (status:string): string => {
     if (status === Status.ACCEPTED) return "outline-primary";
     else if (status === Status.CANCELLED  ) return "outline-danger";
@@ -40,3 +50,4 @@ export const privateBtnVariant = (status:string): string => {
     else if (status === Status.NEW) return createEditOrderPath();
     else return "#";
   };
+
