@@ -3,7 +3,8 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 import { FaBell } from "react-icons/fa";
 import translate from "../../../core/locales/ar/translation.json";
 import { useLocation, useNavigate } from "react-router-dom";
-function ConfirmReject() {
+
+export default function ConfirmReject() {
   const location = useLocation();
   const navigate = useNavigate();
   return (
@@ -47,4 +48,3 @@ function ConfirmReject() {
     </div>
   );
 }
-export default ConfirmReject;

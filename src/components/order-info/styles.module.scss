@@ -1,9 +1,19 @@
-.titleContainer {
-  border-top-left-radius: 20px;
+.titleContainerRight {
   border-top-right-radius: 20px;
-  background-color: purple;
 }
-
+.titleContainerLeft{
+  border-top-left-radius: 20px;
+}
 .title {
   padding: 20px 70px;
+}
+@media (max-width:768px) {
+  .titleContainerRight {
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+  }
+  .titleContainerLeft{
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+  }
 }

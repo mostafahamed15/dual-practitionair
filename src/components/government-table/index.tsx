@@ -10,13 +10,17 @@ interface GovernmentTableProps {
   rows: Object[];
 }
 
-export default function GovernmentTable({ titles, rows }: GovernmentTableProps) {
+export default function GovernmentTable({
+  titles,
+  rows,
+}: GovernmentTableProps) {
   const [searchResult, setSearchResult] = useState<Object[]>(rows);
-
   const filteredRows = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newRows = rows.filter((data) =>
-      Object.values(data).toString().includes(e.target.value)
-    );
+    const newRows =
+      rows &&
+      rows.filter((data) =>
+        Object.values(data).toString().includes(e.target.value)
+      );
     setSearchResult(newRows);
   };
 

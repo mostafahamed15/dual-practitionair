@@ -1,5 +1,4 @@
 import React, { Suspense } from "react";
-
 import {
   home,
   governmentHomePath,
@@ -13,8 +12,8 @@ import {
   renewOrderPath,
   practitionerDataPath,
   previewOrderPath,
-  confirmRejectPath ,
-  successRejectPath
+  confirmRejectPath,
+  successRejectPath,
 } from "./Paths";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
@@ -132,15 +131,15 @@ export default function Routing() {
             path={rejectOrderPath()}
             element={withSuspenseComponents(<RejectOrder />)}
           />
-            <Route
+          <Route
             key="WaitingOrder"
             path={waitingOrderPath()}
-            element={withSuspenseComponents(<WaitingOrder/>)}
+            element={withSuspenseComponents(<WaitingOrder />)}
           />
-           <Route
+          <Route
             key="RenewOrder"
             path={renewOrderPath()}
-            element={withSuspenseComponents(<RenewOrder/>)}
+            element={withSuspenseComponents(<RenewOrder />)}
           />
           <Route
             key="CancelOrder"
