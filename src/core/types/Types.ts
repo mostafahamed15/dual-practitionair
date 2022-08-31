@@ -40,4 +40,9 @@ export type doctorDaySchedule =[
     from: string,
     to: string,
     day: number,
-    totalHours:number    },]
+    totalHours:number }]
+export type  rejectDetail={
+      rejectorg:string,
+      rejectDate:string,
+      rejectReason:string
+    }

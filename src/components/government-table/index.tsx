@@ -93,7 +93,7 @@ export default function GovernmentTable({
             ))}
           </tbody>
         </Table>
-      ):<h3>لاتوجد طلبات</h3>}
+      ):<h3>{translate.table.notFound}</h3>}
     </div>
   );
 }

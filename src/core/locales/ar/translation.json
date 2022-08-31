@@ -7,7 +7,8 @@
     "search": "بحث",
     "showInputs": "أظهر مدخلات",
     "cancelApprove": "الغاء الموافقة",
-    "renewOrder": "تجديد الطلب"
+    "renewOrder": "تجديد الطلب",
+    "notFound":"لاتوجد طلبات"
   },
   "subHeader": {
     "titleGovernoratorSpecialist": " موافقة عمل خارج أوقات الدوام الرسمي للممارسين الصحيين الحكوميين"
@@ -176,7 +177,7 @@
             "day": "السبت", "time": " 08:30 am - 04:30 pm ",  "text_color": "text-secondary"
           }
         ],
-        "workHours": "  ساعة ",
+        "workHours": "ساعة ",
         "period": "  شهر"
       }
     },
@@ -187,7 +188,8 @@
         "rejectReason":" سبب الرفض"
     },
      "waitingOrder":{
-        "note": "يتطلب تأكيد القبول خصم {{number}} من نقاطك",
+        "note": "يتطلب تأكيد القبول خصم  ",
+        "point":"من نقاطك",
         "confirm": "تأكيد القبول",
         "cancel": "الغاء الطلب"
     },

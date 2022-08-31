@@ -28,8 +28,8 @@ export default function WaitingOrderModal({
    const data={RequestServiceCode:RequestServiceCode, Approval:true,Comment:"Accept"}
  const pointsDiscount=(data:any)=>{
     privateAddRequest(data).then((response)=>{
-setSuccess(true)
-  // setErrorMessage(response?.data.message|| 'Success');
+    setSuccess(true)
+    // setErrorMessage(response?.data.message|| 'Success');
     }).catch((e)=>{
       setSuccess(false)
       setErrorMessage(e?.response?.data?.message || 'Server Error');
@@ -43,11 +43,12 @@ setSuccess(true)
     >
       <Modal.Body className="d-flex flex-column justify-content-center align-items-center mx-3">
         {isConfirmed ? (
-         !success?<p>{errorMessage}</p>: <>
+         success? <>
          <AiOutlineCheckCircle size={70} className="text-primary my-2" />
          <p className="text-secondary fw-bold ">{confirmMessage}</p>
          <p className="text-secondary fw-bold ">{translate.modal.note}</p>
-       </>
+       </>: <p className="text-danger fw-bold p-5">{errorMessage}</p>
+        
         ) : (
           <>
             <AiOutlineInfoCircle

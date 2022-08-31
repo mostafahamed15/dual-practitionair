@@ -1,9 +1,12 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { rejectOrder } from "../../core/data/Data";
 import translate from "../../core/locales/ar/translation.json";
+import { rejectDetail } from '../../core/types/Types';
 import Styles from "./styles.module.scss";
-
-export default function RejectReason() {
+interface RejectReasonProps {
+ reason?:rejectDetail;
+}
+export default function RejectReason({reason}:RejectReasonProps) {
   return (
     <Container className="p-5 ">
       <Row
@@ -14,7 +17,7 @@ export default function RejectReason() {
         </p>
       </Row>
       <Row className="d-flex bg-gray-200 ">
-        {Object.values(rejectOrder).map((data, index) => {
+        {Object.values(reason!).map((data, index) => {
           return (
             <Col
               className={` text-center  px-0 ${

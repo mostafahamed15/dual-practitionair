@@ -8,10 +8,12 @@ import WorkSchedule from '../../../components/work-schedule';
 import PeriodOfWork from '../../../components/period-of-work';
 import WaitingOrderModal from '../../../components/waiting-order-modal';
 import { getDetailedItem } from '../../../services/practitioner';
-import { workHours } from '../../../core/types/Types';
+import { doctorDaySchedule, workHours } from '../../../core/types/Types';
 import { getPaymentDetailes } from '../../../services/paymentApi';
+import ModalPopup from '../../../components/modal';
 export default function WaitingOrder() {
   const [acceptModal, setAcceptModal] = useState<boolean>(false);
+  const [rejectModal, setRejectModal] = useState<boolean>(false);
   const [orgInfo, setOrgInfo] = useState<any>({});
   const [personInfo, setPersonOrgInfo] = useState<any>({});
   const [detailErrorMessage, setDetailErrorMessage] = useState('');
@@ -19,7 +21,7 @@ export default function WaitingOrder() {
     period:0});
   const [points,setPoints]=useState(0)
   const [error,setError]=useState(false)
-  const [workSchedule,setWorkSchedule]=useState([])
+  const [workSchedule,setWorkSchedule]=useState<any>([])
   useEffect(() => {
     getDetailedItem()
       .then((response) => {
@@ -81,6 +83,7 @@ export default function WaitingOrder() {
       <hr className="text-gray-700 my-5 w-100" />
       <h5 className="text-secondary py-3 fw-bold">
         {translate.privateFacility.waitingOrder.note  }
+        {points}  {translate.privateFacility.waitingOrder.point }
       </h5>
       <div className="d-flex justify-content-center w-50 mb-4">
         <Button
@@ -90,7 +93,9 @@ export default function WaitingOrder() {
         >
           {translate.privateFacility.waitingOrder.confirm}
         </Button>
-        <Button variant="reject text-white rounded-pill mx-3 py-2 px-3">
+        <Button variant="reject text-white rounded-pill mx-3 py-2 px-3"
+        onClick={() => setRejectModal(true)}
+        >
           {translate.privateFacility.waitingOrder.cancel}
         </Button>
       </div>
@@ -99,6 +104,12 @@ export default function WaitingOrder() {
         handleClose={() => setAcceptModal(false)}
         question={translate.modal.accept}
         confirmMessage={translate.modal.acceptConfirm}
+      />
+      <ModalPopup
+        show={rejectModal}
+        handleClose={() => setRejectModal(false)}
+        confirmMessage={translate.modal.cancelConfirm}
+        question={translate.modal.cancel}
       />
       <p className="text-secondary p-5">{translate.copyRight}</p>
     </div>}

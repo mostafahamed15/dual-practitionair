@@ -7,11 +7,17 @@ import { Button } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import RejectReason from "../../../components/reject-reason";
 import { getDetailedItem } from '../../../services/practitioner';
+import { rejectDetail } from '../../../core/types/Types';
 export default function RejectOrder() {
   const navigate = useNavigate();
   const location = useLocation();
   const [orgInfo, setOrgInfo] = useState<any>();
   const [personInfo, setPersonOrgInfo] = useState<any>();
+  const [rejectDetail, setRejectDetail] = useState<rejectDetail>({
+    rejectorg:"     " ,
+    rejectDate:"",
+    rejectReason:""
+  });
   const [detailErrorMessage, setDetailErrorMessage] = useState('');
   const [error,setError]=useState(false)
   useEffect(() => {
@@ -33,8 +39,14 @@ export default function RejectOrder() {
           specializationEndDate: data.privateEstablishmentLicenseExpiryDate,
           orgName: data.prvOrgName,
         };
+        const rejectDetail={
+          rejectorg:data.refusalSide,
+          rejectDate:data.rejectionDate,
+          rejectReason:data.rrejectionReason
+        }
         setOrgInfo(org);
         setPersonOrgInfo(privatePerson);
+        setRejectDetail(rejectDetail)
         setError(false)
       })
       .catch((e) => {
@@ -57,10 +69,10 @@ export default function RejectOrder() {
         </div>
       </div>
       <OrderInfo
-        organizationInfo={organizationInfo}
-        personInfo={privatePersonInfo}
+        organizationInfo={orgInfo}
+        personInfo={personInfo}
       />
-      <RejectReason />
+      <RejectReason reason={rejectDetail}/>
       <hr className="text-gray-700 my-5 w-100" />
       <div className="d-flex justify-content-center w-50 mb-4">
         <Button
