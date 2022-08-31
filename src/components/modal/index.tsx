@@ -67,9 +67,7 @@ export default function ModalPopup({
                 <input
                   type="text"
                   className="border-0 w-100 h-100  "
-                  placeholder={
-                    translate.governmenFacility.createOrder.placeholder
-                  }
+                  placeholder={translate.modal.rejectPlaceholder}
                 />
               </div>
             </>
@@ -108,13 +106,13 @@ export default function ModalPopup({
               variant="secondary w-25 text-white rounded-pill mx-3"
               onClick={handleClose}
             >
-              {translate.governmenFacility.createOrder.cancel}
+              {translate.modal.cancelation}
             </Button>
             <Button
               variant="primary w-25 text-white rounded-pill mx-3"
               onClick={() => setIsConfirmed(true)}
             >
-              {translate.governmenFacility.createOrder.send}
+              {translate.modal.send}
             </Button>
           </>
         )}

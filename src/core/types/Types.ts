@@ -17,7 +17,7 @@ export type OrganizationInfo = {
   expDate: string;
   governorate: string;
 };
-export type practitionerData = {
+export type PractitionerInfo = {
   practitionerName: string;
   practitionerId: string;
   practitionerClass: string;
@@ -27,6 +27,22 @@ export type practitionerData = {
   workName: string;
 };
 export type dayHours = {
-  name: string, 
-  sum: number
+  day: string, 
+  sum: number,
+  checked:boolean
 };
+export type workHours = {
+  sum: number,
+  period:number
+};
+export type doctorDaySchedule =[
+  {
+    from: string,
+    to: string,
+    day: number,
+    totalHours:number }]
+export type  rejectDetail={
+      rejectorg:string,
+      rejectDate:string,
+      rejectReason:string
+    }

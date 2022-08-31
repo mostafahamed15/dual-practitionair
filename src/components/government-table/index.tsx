@@ -1,22 +1,28 @@
-import React, { useState } from "react";
-import { Table } from "react-bootstrap";
-import translate from "../../core/locales/ar/translation.json";
-import { AiOutlineSearch } from "react-icons/ai";
-import { Status } from "../../core/enums/Enum";
-import TableLink from "../table-link";
-import GovernmentTableButton from "../government-table-button";
+import React, { useState } from 'react';
+import { Table } from 'react-bootstrap';
+import translate from '../../core/locales/ar/translation.json';
+import { AiOutlineSearch } from 'react-icons/ai';
+import { Status } from '../../core/enums/Enum';
+import TableLink from '../table-link';
+import GovernmentTableButton from '../government-table-button';
+
 interface GovernmentTableProps {
   titles: string[];
   rows: Object[];
 }
 
-export default function GovernmentTable({ titles, rows }: GovernmentTableProps) {
+export default function GovernmentTable({
+  titles,
+  rows,
+}: GovernmentTableProps) {
   const [searchResult, setSearchResult] = useState<Object[]>(rows);
 
   const filteredRows = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newRows = rows.filter((data) =>
-      Object.values(data).toString().includes(e.target.value)
-    );
+    const newRows =
+      rows &&
+      rows.filter((data) =>
+        Object.values(data).toString().includes(e.target.value)
+      );
     setSearchResult(newRows);
   };
 
@@ -49,43 +55,45 @@ export default function GovernmentTable({ titles, rows }: GovernmentTableProps) 
           </select>
         </div>
       </div>
-      <Table hover>
-        <thead className="bg-secondary text-white text-center">
-          <tr>
-            {titles.map((title: string, index: number) => (
-              <th key={index}>{title}</th>
-            ))}
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {searchResult.map((row: Object, index: number) => (
-            <tr key={index} className="text-gray-800 text-center">
-              {Object.entries(row).map((data, index) =>
-                data[0] === "status" ? (
-                  <td key={index}>
-                    <GovernmentTableButton status={data[1]}/>
-                  </td>
-                ) : (
-                  <td key={index}>{data[1]}</td>
-                )
-              )}
-              {Object.entries(row).map(
-                (data, index) =>
-                  data[0] === "status" && (
-                    <td key={index}>
-                      {data[1] === Status.ACCEPTED ? (
-                        <TableLink status={Status.ACCEPTED} />
-                      ) : data[1] === Status.DONE ? (
-                        <TableLink status={Status.DONE} />
-                      ) : null}
-                    </td>
-                  )
-              )}
+      {rows.length  ? (
+        <Table hover>
+          <thead className="bg-secondary text-white text-center">
+            <tr>
+              {titles.map((title: string, index: number) => (
+                <th key={index}>{title}</th>
+              ))}
+              <th></th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {searchResult.map((row: Object, index: number) => (
+              <tr key={index} className="text-gray-800 text-center">
+                {Object.entries(row).map((data, index) =>
+                  data[0] === 'status' ? (
+                    <td key={index}>
+                      <GovernmentTableButton status={data[1]} />
+                    </td>
+                  ) : (
+                    <td key={index}>{data[1]}</td>
+                  )
+                )}
+                {Object.entries(row).map(
+                  (data, index) =>
+                    data[0] === 'status' && (
+                      <td key={index}>
+                        {data[1] === Status.ACCEPTED ? (
+                          <TableLink status={Status.ACCEPTED} />
+                        ) : data[1] === Status.DONE ? (
+                          <TableLink status={Status.DONE} />
+                        ) : null}
+                      </td>
+                    )
+                )}
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      ):<h3>{translate.table.notFound}</h3>}
     </div>
   );
 }
